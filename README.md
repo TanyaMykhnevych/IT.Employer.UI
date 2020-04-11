@@ -1,3 +1,4 @@
 💪💪💪 IT Employer 💪💪💪
 
-![GitHub Logo](http://prntscr.com/rxeqnd)
+![GitHub Logo](/src/assets/img/brand/logo.png)
+Format: ![Alt Text](url)
