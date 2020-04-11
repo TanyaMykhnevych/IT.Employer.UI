@@ -7,6 +7,8 @@ Unfortunately, sometimes IT companies have such a situation that after completio
 
 That is, the system solves the following problems:
 💪 hiring IT specialists quickly and profitably, as employees have proven experience and recommendations from a previous company;
+
 💪 closing vacancies in IT companies looking for high-quality specialists;
+
 💪 the reputation of IT companies does not suffer, because they do their best to get their employees a good offer from another company.
 
