@@ -1,6 +1,8 @@
 ![GitHub Logo](/src/assets/img/brand/logo.png)
 
 
+
+
 Software system for the employment of IT specialists.
 
 Unfortunately, sometimes IT companies have such a situation that after completion of the project there is no work on new projects for entire teams. Yes, some companies can afford to keep workers on a bench, internal projects, but not all. But even at the bench, not everyone agrees to stay, so experts are forced to look for a new job.
