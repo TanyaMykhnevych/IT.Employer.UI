@@ -1,0 +1,26 @@
+<form [formGroup]="form" (submit)="onSubmit($event)">
+    <h1>{{'login' | translate}}</h1>
+    <p class="text-muted">{{'auth.sing_in_to_account' | translate}}</p>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="icon-user"></i></span>
+        </div>
+        <input type="text" class="form-control" formControlName="username" placeholder="{{'auth.username' | translate}}"
+            autocomplete="username" required>
+    </div>
+    <div class="input-group mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="icon-lock"></i></span>
+        </div>
+        <input type="password" class="form-control" formControlName="password"
+            placeholder="{{'auth.password' | translate}}" autocomplete="current-password" required>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <button type="submit" class="btn btn-primary px-4">{{'login' | translate}}</button>
+        </div>
+        <div class="col-6 text-right">
+            <button type="button" class="btn btn-link px-0">{{ 'auth.forgot_password' | translate}}</button>
+        </div>
+    </div>
+</form>

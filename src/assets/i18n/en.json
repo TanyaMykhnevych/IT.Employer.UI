@@ -1,0 +1,22 @@
+{
+    "errors": {
+        "passwords_not_match": "Passwords do not match"
+    },
+    "dashboard": "Dashboard",
+    "login": "Login",
+    "signup": "Sign up",
+    "logout": "Logout",
+    "register": "Register",
+    "register_now": "Register Now!",
+    "registration": "Registration",
+    "auth": {
+        "sing_in_to_account": "Sign In to your account",
+        "password": "Password",
+        "username": "Username",
+        "email": "Email",
+        "confirm_password": "Confirm password",
+        "forgot_password": "Forgot password?",
+        "create_your_account": "Create your account",
+        "create_account": "Create Account"
+    }
+}

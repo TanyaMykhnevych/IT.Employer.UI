@@ -6,7 +6,7 @@ import { routes } from './login.routes';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes, { useHash: true }),
+    RouterModule.forRoot(routes),
   ],
   declarations: [],
 })
