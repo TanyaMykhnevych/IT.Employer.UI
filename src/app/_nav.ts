@@ -12,215 +12,107 @@ export const navItems: INavData[] = [
   },
   {
     title: true,
-    name: 'Theme'
+    name: 'Profile'
   },
   {
-    name: 'Colors',
-    url: '/theme/colors',
-    icon: 'icon-drop'
+    name: 'My Company',
+    url: '/mycompany',
+    icon: 'icon-puzzle',
   },
   {
-    name: 'Typography',
-    url: '/theme/typography',
-    icon: 'icon-pencil'
+    name: 'My Employees',
+    url: '/myemployees',
+    icon: 'icon-user',
+  },
+  {
+    name: 'My Offers',
+    url: '/myoffers',
+    icon: 'icon-layers',
+  },
+  {
+    name: 'My Vacancies',
+    url: '/myvacancies',
+    icon: 'icon-screen-desktop',
+  },
+  {
+    name: 'My Teams',
+    url: '/base',
+    icon: 'icon-settings',
   },
   {
     title: true,
-    name: 'Components'
+    name: 'Activities'
   },
   {
-    name: 'Base',
+    name: 'IT Companies',
     url: '/base',
-    icon: 'icon-puzzle',
+    icon: 'icon-briefcase',
     children: [
       {
-        name: 'Cards',
-        url: '/base/cards',
+        name: 'Register',
+        url: '/company/register',
         icon: 'icon-puzzle'
       },
       {
-        name: 'Carousels',
-        url: '/base/carousels',
-        icon: 'icon-puzzle'
+        name: 'Search',
+        url: '/company/search',
+        icon: 'icon-graph'
       },
-      {
-        name: 'Collapses',
-        url: '/base/collapses',
-        icon: 'icon-puzzle'
-      },
-      {
-        name: 'Forms',
-        url: '/base/forms',
-        icon: 'icon-puzzle'
-      },
-      {
-        name: 'Navbars',
-        url: '/base/navbars',
-        icon: 'icon-puzzle'
-
-      },
-      {
-        name: 'Pagination',
-        url: '/base/paginations',
-        icon: 'icon-puzzle'
-      },
-      {
-        name: 'Popovers',
-        url: '/base/popovers',
-        icon: 'icon-puzzle'
-      },
-      {
-        name: 'Progress',
-        url: '/base/progress',
-        icon: 'icon-puzzle'
-      },
-      {
-        name: 'Switches',
-        url: '/base/switches',
-        icon: 'icon-puzzle'
-      },
-      {
-        name: 'Tables',
-        url: '/base/tables',
-        icon: 'icon-puzzle'
-      },
-      {
-        name: 'Tabs',
-        url: '/base/tabs',
-        icon: 'icon-puzzle'
-      },
-      {
-        name: 'Tooltips',
-        url: '/base/tooltips',
-        icon: 'icon-puzzle'
-      }
     ]
   },
   {
-    name: 'Buttons',
+    name: 'Teams',
     url: '/buttons',
     icon: 'icon-cursor',
+    badge: {
+      variant: 'success',
+      text: 'NEW'
+    },
     children: [
       {
-        name: 'Buttons',
+        name: 'Register',
         url: '/buttons/buttons',
         icon: 'icon-cursor'
       },
       {
-        name: 'Dropdowns',
+        name: 'Search',
         url: '/buttons/dropdowns',
-        icon: 'icon-cursor'
+        icon: 'icon-graph'
       },
-      {
-        name: 'Brand Buttons',
-        url: '/buttons/brand-buttons',
-        icon: 'icon-cursor'
-      }
     ]
   },
   {
-    name: 'Charts',
-    url: '/charts',
-    icon: 'icon-pie-chart'
-  },
-  {
-    name: 'Icons',
+    name: 'Employees',
     url: '/icons',
-    icon: 'icon-star',
+    icon: 'icon-people',
     children: [
       {
-        name: 'CoreUI Icons',
+        name: 'Register',
         url: '/icons/coreui-icons',
-        icon: 'icon-star',
-        badge: {
-          variant: 'success',
-          text: 'NEW'
-        }
+        icon: 'icon-user-follow',
       },
       {
-        name: 'Flags',
+        name: 'Search',
         url: '/icons/flags',
-        icon: 'icon-star'
+        icon: 'icon-graph'
       },
-      {
-        name: 'Font Awesome',
-        url: '/icons/font-awesome',
-        icon: 'icon-star',
-        badge: {
-          variant: 'secondary',
-          text: '4.7'
-        }
-      },
-      {
-        name: 'Simple Line Icons',
-        url: '/icons/simple-line-icons',
-        icon: 'icon-star'
-      }
     ]
   },
   {
-    name: 'Notifications',
+    name: 'Vacancies',
     url: '/notifications',
     icon: 'icon-bell',
     children: [
       {
-        name: 'Alerts',
+        name: 'Create',
         url: '/notifications/alerts',
-        icon: 'icon-bell'
+        icon: 'icon-pencil'
       },
       {
-        name: 'Badges',
+        name: 'Search',
         url: '/notifications/badges',
-        icon: 'icon-bell'
+        icon: 'icon-graph'
       },
-      {
-        name: 'Modals',
-        url: '/notifications/modals',
-        icon: 'icon-bell'
-      }
-    ]
-  },
-  {
-    name: 'Widgets',
-    url: '/widgets',
-    icon: 'icon-calculator',
-    badge: {
-      variant: 'info',
-      text: 'NEW'
-    }
-  },
-  {
-    divider: true
-  },
-  {
-    title: true,
-    name: 'Extras',
-  },
-  {
-    name: 'Pages',
-    url: '/pages',
-    icon: 'icon-star',
-    children: [
-      {
-        name: 'Login',
-        url: '/login',
-        icon: 'icon-star'
-      },
-      {
-        name: 'Register',
-        url: '/register',
-        icon: 'icon-star'
-      },
-      {
-        name: 'Error 404',
-        url: '/404',
-        icon: 'icon-star'
-      },
-      {
-        name: 'Error 500',
-        url: '/500',
-        icon: 'icon-star'
-      }
     ]
   },
 ];
