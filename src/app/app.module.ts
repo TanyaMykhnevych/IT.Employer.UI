@@ -7,8 +7,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { DashboardModule } from './features/+dashboard/dashboard.module';
-import { LoginModule } from './features/+login';
+import { EmployeeModule } from './features/+employee/employee.module';
 import { HomeModule } from './features/+home/home.module';
+import { LoginModule } from './features/+login';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { HomeModule } from './features/+home/home.module';
     DashboardModule,
     HomeModule,
     LoginModule.forRoot(),
+    EmployeeModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
