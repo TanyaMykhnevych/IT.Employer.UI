@@ -2,7 +2,8 @@ import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from '../../core/core.module';
-import { EmployeesViewComponent } from './containers/employees-view.component';
+import { EmployeeRegisterComponent } from './containers/register/employee-register.component';
+import { EmployeesViewComponent } from './containers/search/employees-view.component';
 import { EmployeeRoutingModule } from './routes/employee-routing.module';
 import { EmployeeService } from './services/employee.service';
 
@@ -18,6 +19,7 @@ import { EmployeeService } from './services/employee.service';
     ],
     declarations: [
         EmployeesViewComponent,
+        EmployeeRegisterComponent,
     ],
     entryComponents: [
     ],

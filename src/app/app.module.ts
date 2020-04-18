@@ -10,6 +10,9 @@ import { DashboardModule } from './features/+dashboard/dashboard.module';
 import { EmployeeModule } from './features/+employee/employee.module';
 import { HomeModule } from './features/+home/home.module';
 import { LoginModule } from './features/+login';
+import { P500Component } from './features/+error/500.component';
+import { P404Component } from './features/+error/404.component';
+import { CompanyModule } from './features/+company/company.module';
 
 
 @NgModule({
@@ -21,7 +24,8 @@ import { LoginModule } from './features/+login';
     DashboardModule,
     HomeModule,
     LoginModule.forRoot(),
-    EmployeeModule,
+    EmployeeModule.forRoot(),
+    CompanyModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -32,7 +36,9 @@ import { LoginModule } from './features/+login';
   ],
   declarations: [
     AppComponent,
+    P404Component,
+    P500Component,
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

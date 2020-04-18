@@ -16,27 +16,27 @@ export const navItems: INavData[] = [
   },
   {
     name: 'My Company',
-    url: '/mycompany',
+    url: '',
     icon: 'icon-puzzle',
   },
   {
     name: 'My Employees',
-    url: '/myemployees',
+    url: '',
     icon: 'icon-user',
   },
   {
     name: 'My Offers',
-    url: '/myoffers',
+    url: '',
     icon: 'icon-layers',
   },
   {
     name: 'My Vacancies',
-    url: '/myvacancies',
+    url: '',
     icon: 'icon-screen-desktop',
   },
   {
     name: 'My Teams',
-    url: '/base',
+    url: '',
     icon: 'icon-settings',
   },
   {
@@ -45,7 +45,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'IT Companies',
-    url: '/base',
+    url: '/company',
     icon: 'icon-briefcase',
     children: [
       {
@@ -55,7 +55,7 @@ export const navItems: INavData[] = [
       },
       {
         name: 'Search',
-        url: '/company/search',
+        url: '',
         icon: 'icon-graph'
       },
     ]
@@ -71,46 +71,46 @@ export const navItems: INavData[] = [
     children: [
       {
         name: 'Register',
-        url: '/buttons/buttons',
+        url: '',
         icon: 'icon-cursor'
       },
       {
         name: 'Search',
-        url: '/buttons/dropdowns',
+        url: '',
         icon: 'icon-graph'
       },
     ]
   },
   {
     name: 'Employees',
-    url: '/icons',
+    url: '/employees',
     icon: 'icon-people',
     children: [
       {
         name: 'Register',
-        url: '/icons/coreui-icons',
+        url: '/employees/register',
         icon: 'icon-user-follow',
       },
       {
         name: 'Search',
-        url: '/icons/flags',
+        url: '/employees/search',
         icon: 'icon-graph'
       },
     ]
   },
   {
     name: 'Vacancies',
-    url: '/notifications',
+    url: '',
     icon: 'icon-bell',
     children: [
       {
         name: 'Create',
-        url: '/notifications/alerts',
+        url: '',
         icon: 'icon-pencil'
       },
       {
         name: 'Search',
-        url: '/notifications/badges',
+        url: '',
         icon: 'icon-graph'
       },
     ]
