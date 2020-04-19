@@ -18,5 +18,20 @@
         "forgot_password": "Forgot password?",
         "create_your_account": "Create your account",
         "create_account": "Create Account"
-    }
+    },
+    "company": {
+        "it_companies": "IT Companies",
+        "name": "Name",
+        "creation_date": "Creation Date",
+        "email": "Email",
+        "phone": "Phone",
+        "size": "Size",
+        "type": "Type",
+        "website": "Website",
+        "actions": "Actions"
+    },
+    "all": "All",
+    "search_by_name": "Search by name",
+    "found": "Found",
+    "empty_companies": "No companies found"
 }

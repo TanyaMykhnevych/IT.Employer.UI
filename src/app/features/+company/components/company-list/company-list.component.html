@@ -1,0 +1,84 @@
+<div class="companies-container mat-elevation-z8">
+    <div class="loading-indicator" *ngIf="isLoading">
+        <mat-spinner mode="indeterminate"></mat-spinner>
+    </div>
+
+    <div *ngIf="!companies || !companies.length" class="empty-companies">
+        <h2>
+            {{'empty_companies' | translate}}
+        </h2>
+    </div>
+
+    <mat-table [dataSource]="dataSource" *ngIf="companies && companies.length">
+        <ng-container matColumnDef="select">
+            <mat-header-cell mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+                </mat-checkbox>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? toggle(row) : null"
+                    [checked]="selection.isSelected(row)">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell class="name-cell" *matHeaderCellDef>{{'company.name' | translate}}</mat-header-cell>
+            <mat-cell class="name-cell" *matCellDef="let company">{{company.name}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="createdOn">
+            <mat-header-cell *matHeaderCellDef>{{'company.creation_date' | translate}}</mat-header-cell>
+            <mat-cell class="createdOn-cell" *matCellDef="let company">
+                {{company.createdOn | date: 'MM/dd/yyyy hh:mm aa' | lowercase}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef>{{'company.email' | translate}}</mat-header-cell>
+            <mat-cell class="name-cell" *matCellDef="let company">{{company.email}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="phone">
+            <mat-header-cell *matHeaderCellDef>{{'company.phone' | translate}}</mat-header-cell>
+            <mat-cell class="name-cell" *matCellDef="let company">{{company.phone}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="size">
+            <mat-header-cell *matHeaderCellDef>{{'company.size' | translate}}</mat-header-cell>
+            <mat-cell class="name-cell" *matCellDef="let company">{{CompanySize[company.size]}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="type">
+            <mat-header-cell *matHeaderCellDef>{{'company.type' | translate}}</mat-header-cell>
+            <mat-cell class="name-cell" *matCellDef="let company">{{CompanyType[company.type]}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="website">
+            <mat-header-cell *matHeaderCellDef>{{'company.website' | translate}}</mat-header-cell>
+            <mat-cell class="name-cell" *matCellDef="let company"><a [href]="company.website" *ngIf="company.website"><i
+                        class="icon-globe"></i></a></mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>{{'company.actions' | translate}}</mat-header-cell>
+            <mat-cell class="name-cell" *matCellDef="let company">
+                <table>
+                    <tr>
+                        <td><i class="icon-info"></i></td>
+                        <td> <i class="icon-wrench"></i></td>
+                        <td> <i class="icon-trash"></i></td>
+                    </tr>
+                </table>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+        <mat-row *matRowDef="let row; columns: displayedColumns" (click)="selectSingle(row)"
+            [ngClass]="{highlighted: row == selectedCompany || selection.isSelected(row)}"></mat-row>
+
+    </mat-table>
+
+</div>

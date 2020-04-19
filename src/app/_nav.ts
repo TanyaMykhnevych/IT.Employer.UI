@@ -55,7 +55,7 @@ export const navItems: INavData[] = [
       },
       {
         name: 'Search',
-        url: '',
+        url: '/company/search',
         icon: 'icon-graph'
       },
     ]

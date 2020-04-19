@@ -13,11 +13,13 @@ import { LoginModule } from './features/+login';
 import { P500Component } from './features/+error/500.component';
 import { P404Component } from './features/+error/404.component';
 import { CompanyModule } from './features/+company/company.module';
+import { MaterialModule } from './layout/material.module';
 
 
 @NgModule({
   imports: [
     BrowserModule,
+    MaterialModule,
     HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,

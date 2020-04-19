@@ -1,0 +1,43 @@
+<form [formGroup]="searchForm">
+    <div class="companies-body">
+        <div class="actions-top">
+            <div class="buttons-selects-holder">
+                <ng-content select="[buttons]"></ng-content>
+                <div class="search-selects">
+                    <mat-form-field>
+                        <mat-select placeholder="{{ 'company.size' | translate }}" formControlName="size">
+                            <mat-option value=''>{{ 'all' | translate }}</mat-option>
+                            <mat-option *ngFor="let size of sizes" [value]="size">{{CompanySize[size]}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-select placeholder="{{ 'company.type' | translate }}" formControlName="type">
+                            <mat-option value=''>{{ 'all' | translate }}</mat-option>
+                            <mat-option *ngFor="let type of types" [value]="type">{{CompanyType[type]}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <br/>
+            <mat-form-field class="search-holder">
+                <input matInput type="search" id="searchBox" placeholder="{{'search_by_name' | translate}}"
+                    formControlName="searchTerm">
+            </mat-form-field>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> {{'company.it_companies' | translate}}
+            </div>
+            <div class="card-body">
+                <ng-content select=[table]></ng-content>
+                <mat-paginator #paginator [length]="totalCount" [pageSize]="pageSize" [pageSizeOptions]="[10, 15, 30]"
+                    (page)="onPaginateChange($event)"></mat-paginator>
+            </div>
+            <div class="card-footer">
+                <ng-content select=[total]></ng-content>
+            </div>
+        </div>
+    </div>
+</form>

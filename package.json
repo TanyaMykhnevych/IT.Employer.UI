@@ -1,21 +1,8 @@
 {
-  "name": "@coreui/coreui-free-angular-admin-template",
-  "version": "2.9.2",
-  "description": "CoreUI Free Angular 2+ Admin Template",
-  "author": {
-    "name": "Łukasz Holeczek",
-    "url": "http://holeczek.pl",
-    "github": "https://github.com/mrholek",
-    "twitter": "https://twitter.com/lukaszholeczek"
-  },
-  "contributors": [
-    {
-      "name": "Andrzej Kopański",
-      "url": "https://github.com/xidedix"
-    }
-  ],
-  "homepage": "https://coreui.io/angular",
-  "copyright": "Copyright 2020 creativeLabs Łukasz Holeczek",
+  "name": "it_employer",
+  "version": "0.0.1",
+  "description": "IT Employer",
+  "copyright": "Copyright 2020",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -29,10 +16,12 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^9.1.1",
+    "@angular/cdk": "^9.2.1",
     "@angular/common": "^9.1.1",
     "@angular/compiler": "^9.1.1",
     "@angular/core": "^9.1.1",
     "@angular/forms": "^9.1.1",
+    "@angular/material": "~9.2.0",
     "@angular/platform-browser": "^9.1.1",
     "@angular/platform-browser-dynamic": "^9.1.1",
     "@angular/router": "^9.1.1",
@@ -48,6 +37,7 @@
     "flag-icon-css": "^3.4.6",
     "font-awesome": "^4.7.0",
     "i18n": "^0.8.6",
+    "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "mutationobserver-shim": "^0.3.5",
     "ng2-charts": "^2.3.0",

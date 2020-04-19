@@ -6,7 +6,7 @@ import { routes } from './dashboard.routes';
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule.forRoot(routes),
+        RouterModule.forChild(routes),
     ],
     declarations: [],
     exports: [
