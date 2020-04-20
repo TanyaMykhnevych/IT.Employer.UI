@@ -5,9 +5,7 @@ import { CompanyModule } from './features/+company/company.module';
 import { EmployeeModule } from './features/+employee/employee.module';
 import { P404Component } from './features/+error/404.component';
 import { P500Component } from './features/+error/500.component';
-
-export function loadEmployeeModule(): typeof EmployeeModule { return EmployeeModule; }
-export function loadCompanyModule(): typeof CompanyModule { return CompanyModule; }
+import { VacancyModule } from './features/+vacancy/vacancy.module';
 
 export const routes: Routes = [
   {
@@ -29,15 +27,19 @@ export const routes: Routes = [
     children: [
       {
         path: 'employees',
-        loadChildren: loadEmployeeModule,
+        loadChildren: () => EmployeeModule,
       },
       {
         path: 'company',
-        loadChildren: loadCompanyModule,
+        loadChildren: () => CompanyModule,
+      },
+      {
+        path: 'vacancy',
+        loadChildren: () => VacancyModule,
       },
     ]
   },
-  // { path: '**', component: P404Component }
+  { path: '*', component: P404Component }
 ];
 
 @NgModule({

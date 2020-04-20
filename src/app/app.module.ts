@@ -14,6 +14,7 @@ import { P404Component } from './features/+error/404.component';
 import { P500Component } from './features/+error/500.component';
 import { HomeModule } from './features/+home/home.module';
 import { LoginModule } from './features/+login';
+import { VacancyModule } from './features/+vacancy/vacancy.module';
 import { MaterialModule } from './layout/material.module';
 
 
@@ -29,6 +30,7 @@ import { MaterialModule } from './layout/material.module';
     LoginModule.forRoot(),
     EmployeeModule.forRoot(),
     CompanyModule.forRoot(),
+    VacancyModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

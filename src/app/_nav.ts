@@ -110,7 +110,7 @@ export const navItems: INavData[] = [
       },
       {
         name: 'Search',
-        url: '',
+        url: '/vacancy/search',
         icon: 'icon-graph'
       },
     ]

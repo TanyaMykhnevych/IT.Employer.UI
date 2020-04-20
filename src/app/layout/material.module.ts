@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -32,6 +33,7 @@ const MATERIAL_MODULES = [
     MatButtonToggleModule,
     MatCheckboxModule,
     MatSelectModule,
+    MatCardModule,
 ];
 
 @NgModule({

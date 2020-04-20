@@ -8,9 +8,8 @@ import { CompanyListComponent } from './components/company-list/company-list.com
 import { CompanySearchFormComponent } from './components/company-search-form/company-search-form.component';
 import { CompanyRegisterComponent } from './containers/register/company-register.component';
 import { CompaniesViewComponent } from './containers/view/companies-view.component';
-import { CompanyRoutingModule } from './routes/employee-routing.module';
+import { CompanyRoutingModule } from './routes/company-routing.module';
 import { CompanyService } from './services/company.service';
-
 
 
 @NgModule({

@@ -30,8 +30,19 @@
         "website": "Website",
         "actions": "Actions"
     },
+    "vacancy": {
+        "vacancies": "Vacancies",
+        "name": "Name",
+        "creation_date": "Creation Date",
+        "position": "Position",
+        "profession": "Profession",
+        "primary_technology": "Primary technology",
+        "experience": "Experience",
+        "apply": "APPLY"
+    },
     "all": "All",
     "search_by_name": "Search by name",
     "found": "Found",
-    "empty_companies": "No companies found"
+    "empty_companies": "No companies found",
+    "empty_vacancies": "No vacancies found"
 }

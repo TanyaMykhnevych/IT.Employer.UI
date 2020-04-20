@@ -1,0 +1,45 @@
+<form [formGroup]="searchForm">
+    <div class="companies-body">
+        <div class="actions-top">
+            <div class="buttons-selects-holder">
+                <ng-content select="[buttons]"></ng-content>
+                <div class="search-selects">
+                    <mat-form-field>
+                        <mat-select placeholder="{{ 'vacancy.profession' | translate }}" formControlName="profession">
+                            <mat-option value=''>{{ 'all' | translate }}</mat-option>
+                            <mat-option *ngFor="let profession of professions" [value]="profession">{{Profession[profession]}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-select placeholder="{{ 'vacancy.position' | translate }}" formControlName="position">
+                            <mat-option value=''>{{ 'all' | translate }}</mat-option>
+                            <mat-option *ngFor="let position of positions" [value]="position">{{Position[position]}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-select placeholder="{{ 'vacancy.primary_technology' | translate }}" formControlName="primaryTechnology">
+                            <mat-option value=''>{{ 'all' | translate }}</mat-option>
+                            <mat-option *ngFor="let technology of technologies" [value]="technology">{{Technology[technology]}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <br />
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> {{'vacancy.vacancies' | translate}}
+            </div>
+            <ng-content select=[table]></ng-content>
+            <mat-paginator #paginator [length]="totalCount" [pageSize]="pageSize" [pageSizeOptions]="[3, 5, 10, 30]"
+                (page)="onPaginateChange($event)"></mat-paginator>
+            <div class="card-footer">
+                <ng-content select=[total]></ng-content>
+            </div>
+        </div>
+    </div>
+</form>

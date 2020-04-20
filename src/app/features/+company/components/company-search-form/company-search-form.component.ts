@@ -1,6 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild, OnDestroy } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { EnumUtils } from '../../../../core/enum';
 import { CompanySearchParameter, CompanySize, CompanyType } from '../../../../models';
 import { CompanyDefaultSearchParameter } from '../../constants/company-default-search.const';
@@ -12,7 +14,7 @@ import { CompanyDefaultSearchParameter } from '../../constants/company-default-s
     styleUrls: ['./company-search-form.component.scss'],
 })
 
-export class CompanySearchFormComponent implements OnInit {
+export class CompanySearchFormComponent implements OnInit, OnDestroy {
     public CompanySize = CompanySize;
     public CompanyType = CompanyType;
     public sizes: number[] = [];
@@ -21,9 +23,10 @@ export class CompanySearchFormComponent implements OnInit {
     @Output() public valueChanges: EventEmitter<CompanySearchParameter> = new EventEmitter<CompanySearchParameter>();
     @Input() public totalCount: number = 0;
     public searchForm: FormGroup;
-    @ViewChild(MatPaginator , { static: true }) public paginator: MatPaginator;
+    @ViewChild(MatPaginator, { static: true }) public paginator: MatPaginator;
 
     private _searchParameters: CompanySearchParameter = CompanyDefaultSearchParameter;
+    private _destroy$: Subject<void> = new Subject<void>();
 
     constructor(private _builder: FormBuilder) { }
 
@@ -38,6 +41,11 @@ export class CompanySearchFormComponent implements OnInit {
 
         this._emit(this.searchForm.value);
         this._subscribeControlValuesChages();
+    }
+
+    public ngOnDestroy(): void {
+        this._destroy$.next();
+        this._destroy$.complete();
     }
 
     @Input()
@@ -105,15 +113,15 @@ export class CompanySearchFormComponent implements OnInit {
     }
 
     private _subscribeControlValuesChages(): void {
-        this.searchForm.controls.size.valueChanges.subscribe((value: CompanySize) => {
+        this.searchForm.controls.size.valueChanges.pipe(takeUntil(this._destroy$)).subscribe((value: CompanySize) => {
             this.page = 0;
             this.filter({ size: value });
         });
-        this.searchForm.controls.type.valueChanges.subscribe((value: number) => {
+        this.searchForm.controls.type.valueChanges.pipe(takeUntil(this._destroy$)).subscribe((value: number) => {
             this.page = 0;
             this.filter({ type: value });
         });
-        this.searchForm.controls.searchTerm.valueChanges.subscribe((value: string) => {
+        this.searchForm.controls.searchTerm.valueChanges.pipe(takeUntil(this._destroy$)).subscribe((value: string) => {
             this.page = 0;
             if (value.length < 1) {
                 this.filter({ searchTerm: null });
