@@ -1,3 +1,4 @@
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -6,13 +7,13 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
+import { CompanyModule } from './features/+company/company.module';
 import { DashboardModule } from './features/+dashboard/dashboard.module';
 import { EmployeeModule } from './features/+employee/employee.module';
+import { P404Component } from './features/+error/404.component';
+import { P500Component } from './features/+error/500.component';
 import { HomeModule } from './features/+home/home.module';
 import { LoginModule } from './features/+login';
-import { P500Component } from './features/+error/500.component';
-import { P404Component } from './features/+error/404.component';
-import { CompanyModule } from './features/+company/company.module';
 import { MaterialModule } from './layout/material.module';
 
 
@@ -40,6 +41,12 @@ import { MaterialModule } from './layout/material.module';
     AppComponent,
     P404Component,
     P500Component,
+  ],
+  providers: [
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy,
+    }
   ],
   bootstrap: [AppComponent]
 })
