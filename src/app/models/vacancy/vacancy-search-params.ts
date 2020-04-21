@@ -6,6 +6,7 @@ export interface VacancySearchParameter extends ISearchQueryParameter{
     position?: Position;
     primaryTechnology?: Technology;
 
+    myVacancies?: boolean;
 
     experienceFrom?: number;
     experienceTo?: number;
