@@ -47,7 +47,12 @@ export class CompanyFormComponent implements OnInit {
     @Validate()
     private _submit(): void {
         this._setNullForEmptyFields();
-        this.submit.emit({ ...this.company, ...this.form.value });
+
+        const result = { ...this.company, ...this.form.value };
+        result.type = +result.type;
+        result.size = +result.size;
+
+        this.submit.emit(result);
     }
 
     private _setNullForEmptyFields(): void {

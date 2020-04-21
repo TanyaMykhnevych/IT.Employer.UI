@@ -1,0 +1,56 @@
+<form class="card" [formGroup]="form" (ngSubmit)="done($event)">
+    <div class="card-header">
+        <strong>Vacancy Creation</strong>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input formControlName="name" type="text" class="form-control" id="name" placeholder="Enter vacancy name">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" formControlName="description" class="form-control" id="description"
+                placeholder="Enter description">
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-4">
+                <label for="profession">{{'vacancy.profession' | translate}}</label>
+                <select class="form-control" id="profession" formControlName="profession">
+                    <option *ngFor="let profession of professions" [value]="profession">{{Profession[profession]}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="position">{{'vacancy.position' | translate}}</label>
+                <select class="form-control" id="position" formControlName="position">
+                    <option *ngFor="let position of positions" [value]="position">{{Position[position]}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="primaryTechnology">{{'vacancy.primary_technology' | translate}}</label>
+                <select class="form-control" id="primaryTechnology" formControlName="primaryTechnology">
+                    <option *ngFor="let technology of technologies" [value]="technology">{{Technology[technology]}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="image">{{'vacancy.image' | translate}}</label>
+            <input type="text" formControlName="image" class="form-control" id="image"
+                placeholder="Enter image url">
+        </div>
+        
+        <div class="form-group">
+            <label for="experienceYears">{{'vacancy.experience' | translate}}</label>
+            <input type="number" [min]="0" [max]="80" formControlName="experienceYears" class="form-control" id="experienceYears"
+                placeholder="Enter experience years from">
+        </div>
+    </div>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+        <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+    </div>
+</form>

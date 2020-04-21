@@ -1,6 +1,6 @@
 import { BaseEntity } from '../base';
 import { Company } from '../company';
-import { Profession, Technology } from '../employee';
+import { Position, Profession, Technology } from '../employee';
 
 export interface Vacancy extends BaseEntity {
     name?: string;
@@ -11,7 +11,9 @@ export interface Vacancy extends BaseEntity {
     primaryTechnology: Technology;
     experienceYears: number;
 
-    companyId: string;
+    image?: string;
 
-    company: Company;
+    companyId?: string;
+
+    company?: Company;
 }

@@ -38,6 +38,7 @@
         "profession": "Profession",
         "primary_technology": "Primary technology",
         "experience": "Experience",
+        "image": "Image",
         "apply": "APPLY"
     },
     "all": "All",

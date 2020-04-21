@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { AuthGuard } from '../../../core/auth';
+import { CreateVacancyComponent } from '../containers/create/create-vacancy.component';
 import { VacanciesViewComponent } from '../containers/view/vacancies-view.component';
 
 export const routes: Routes = [
@@ -15,6 +16,10 @@ export const routes: Routes = [
       {
         path: 'search',
         component: VacanciesViewComponent,
+      },
+      {
+        path: 'create',
+        component: CreateVacancyComponent,
       },
     ]
   },
