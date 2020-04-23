@@ -1,0 +1,26 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{vacancy?.name}}</mat-card-title>
+        <mat-card-subtitle>{{'vacancy.experience' | translate}}: {{vacancy?.experienceYears}} y.</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="vacancy?.image ? vacancy?.image : '../../../../../assets/img/vacancy/vacancy.png'">
+    <mat-card-content>
+        <p>
+            <b>{{'vacancy.profession' | translate}}:</b> {{Profession[vacancy?.profession]}}
+        </p>
+        <p>
+            <b>{{'vacancy.position' | translate}}:</b> {{Position[vacancy?.position]}}
+        </p>
+        <p>
+            <b>{{'vacancy.primary_technology' | translate}}:</b> {{Technology[vacancy?.primaryTechnology]}}
+        </p>
+        <p>
+            {{vacancy?.description}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button *ngIf="!editable" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> {{'vacancy.apply' | translate}}</button>
+        <button *ngIf="editable" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> {{'vacancy.edit' | translate}}</button>
+    </mat-card-actions>
+</mat-card>

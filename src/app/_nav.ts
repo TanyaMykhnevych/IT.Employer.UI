@@ -31,7 +31,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'My Vacancies',
-    url: '',
+    url: '/vacancy/my',
     icon: 'icon-screen-desktop',
   },
   {

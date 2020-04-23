@@ -1,0 +1,10 @@
+<div class="wrap vacancies-page">
+  <div class="vacancies-search">
+    <app-vacancy-search-form [totalCount]="totalCount" (valueChanges)="onSearch($event)" [totalCount]="totalCount"
+      [searchParameters]="searchParameters">
+      <h6 total> {{'found' | translate }}: {{totalCount}}</h6>
+      <app-vacancy-list table [vacancies]="vacancies" [editable]="true">
+      </app-vacancy-list>
+    </app-vacancy-search-form>
+  </div>
+</div>
