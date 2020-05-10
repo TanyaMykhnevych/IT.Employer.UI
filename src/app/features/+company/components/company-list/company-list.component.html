@@ -67,8 +67,8 @@
                 <table>
                     <tr>
                         <td><i class="icon-info"></i></td>
-                        <td> <i class="icon-wrench"></i></td>
-                        <td> <i class="icon-trash"></i></td>
+                        <td *ngIf="isAdmin"> <i class="icon-wrench"></i></td>
+                        <td *ngIf="isAdmin"> <i class="icon-trash"></i></td>
                     </tr>
                 </table>
             </mat-cell>

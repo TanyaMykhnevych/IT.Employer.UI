@@ -1,6 +1,7 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { CurrentUserService } from '../../../../core/permission/services';
 import { Company, CompanySize, CompanyType } from '../../../../models';
 
 @Component({
@@ -12,6 +13,7 @@ import { Company, CompanySize, CompanyType } from '../../../../models';
 export class CompanyListComponent implements OnInit {
     public CompanySize = CompanySize;
     public CompanyType = CompanyType;
+    public isAdmin: boolean = false;
 
     @Input()
     public set companies(companies: Company[]) {
@@ -36,7 +38,9 @@ export class CompanyListComponent implements OnInit {
     private _companies: Company[] = [];
     private _selectedCompanies: Company[] = [];
 
-    constructor() { }
+    constructor(private _currentUserService: CurrentUserService) {
+        this.isAdmin = this._currentUserService.isAdmin;
+    }
 
     public ngOnInit(): void { }
 

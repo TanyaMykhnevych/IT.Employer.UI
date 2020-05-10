@@ -22,6 +22,10 @@ export class CurrentUserService {
         this.userInfoChanged.next();
     }
 
+    public get isAdmin(): boolean {
+        return this._userInfo.role === 'Admin';
+    }
+
     public set userCompanyId(companyId: string) {
         this._userInfo.companyId = companyId;
         this.userInfoChanged.next();
