@@ -7,10 +7,12 @@ import { SearchResponseUtils } from '../../../core/search/search-response';
 import { AppSettings } from '../../../core/settings';
 import { Company, ISearchResponse } from '../../../models';
 import { CompanySearchParameter } from '../../../models/company/company-search-params';
+import { tap } from 'rxjs/operators';
+import { CurrentUserService } from '../../../core/permission/services';
 
 @Injectable()
 export class CompanyService {
-    constructor(private _http: HttpClient) { }
+    constructor(private _http: HttpClient, private _currentUserService: CurrentUserService) { }
 
     public getCompanies(parameters: CompanySearchParameter): Observable<ISearchResponse<Company>> {
 
@@ -25,7 +27,8 @@ export class CompanyService {
     }
 
     public create(company: Company): Observable<Company> {
-        return this._http.post<Company>(`${AppSettings.apiHost}/company`, company);
+        return this._http.post<Company>(`${AppSettings.apiHost}/company`, company)
+            .pipe(tap(comp => this._currentUserService.userCompanyId = comp.id));
     }
 
     public update(company: Company): Observable<Company> {

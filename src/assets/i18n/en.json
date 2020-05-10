@@ -4,6 +4,7 @@
     },
     "dashboard": "Dashboard",
     "login": "Login",
+    "already_have_account": "Do you have already an account?",
     "signup": "Sign up",
     "logout": "Logout",
     "register": "Register",

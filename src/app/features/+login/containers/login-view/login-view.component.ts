@@ -28,7 +28,7 @@ export class LoginViewComponent implements OnInit {
             });
     }
 
-    public goHome(): void {
-        this._router.navigate(['/home']);
+    public register(): void {
+        this._router.navigate(['/register']);
     }
 }

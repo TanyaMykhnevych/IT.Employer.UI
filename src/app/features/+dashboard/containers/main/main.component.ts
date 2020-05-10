@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { INavData } from '@coreui/angular';
+import { NavMenuService } from '../../services/nav-menu.service';
 import { AuthService } from '../../../../core/auth';
-import { navItems } from '../../../../_nav';
 
 @Component({
   selector: 'app-main',
@@ -9,15 +10,20 @@ import { navItems } from '../../../../_nav';
 })
 export class MainComponent implements OnInit {
   public sidebarMinimized = false;
-  public navItems = navItems;
   public isAuthenticated: boolean = false;
 
   constructor(
     public router: Router,
-    private _authService: AuthService) { }
+    private _authService: AuthService,
+    private _navMenuService: NavMenuService) { }
 
   public ngOnInit(): void {
     this.isAuthenticated = this._authService.isAuthenticated();
+  }
+
+  public get navItems(): INavData[] {
+    return this._navMenuService.navMenu;
+
   }
 
   public toggleMinimize(e): void {

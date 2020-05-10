@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
-import { TokenService } from './token.service';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuthForm, AuthResponse } from '../models';
 import { map } from 'rxjs/operators';
+import { CurrentUserService } from '../../permission/services';
 import { AppSettings } from '../../settings';
+import { AuthForm, AuthResponse } from '../models';
+import { TokenService } from './token.service';
 
 @Injectable()
 export class AuthService {
 
-    constructor(private _http: HttpClient, private _tokenService: TokenService) { }
+    constructor(private _http: HttpClient, private _tokenService: TokenService, private _currentUserService: CurrentUserService) { }
 
     public isAuthenticated(): boolean {
         return !!this._tokenService.token;
@@ -21,6 +22,7 @@ export class AuthService {
                 map((response: AuthResponse) => {
                     if (!response.isAuthorized) { return false; }
                     this._tokenService.token = response.token;
+                    this._currentUserService.userInfo = response.userInfo;
 
                     return true;
                 }),
@@ -29,6 +31,7 @@ export class AuthService {
 
     public unauthorize(): void {
         this._tokenService.clearToken();
+        this._currentUserService.userInfo = null;
     }
 
 }

@@ -25,7 +25,7 @@ import { MaterialModule } from './layout/material.module';
     HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    DashboardModule,
+    DashboardModule.forRoot(),
     HomeModule,
     LoginModule.forRoot(),
     EmployeeModule.forRoot(),

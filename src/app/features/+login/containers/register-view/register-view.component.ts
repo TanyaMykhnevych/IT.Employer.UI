@@ -29,4 +29,8 @@ export class RegisterViewComponent implements OnInit {
     public goHome(): void {
         this._router.navigate(['/home']);
     }
+
+    public login(): void {
+        this._router.navigate(['/login']);
+    }
 }

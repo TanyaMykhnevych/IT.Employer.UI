@@ -13,7 +13,7 @@ import { HomeRoutingModule } from './routes/home-routing.module';
         HomeRoutingModule,
         CoreModule,
         RouterModule,
-        DashboardModule,
+        DashboardModule.forRoot(),
     ],
     declarations: [
         HomeComponent,
