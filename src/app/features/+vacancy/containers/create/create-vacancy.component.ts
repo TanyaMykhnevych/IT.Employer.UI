@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Vacancy } from '../../../../models';
 import { VacancyService } from '../../services/vacancy.service';
 
@@ -11,7 +12,7 @@ import { VacancyService } from '../../services/vacancy.service';
 export class CreateVacancyComponent implements OnInit {
 
     constructor(private _vacancyService: VacancyService,
-        private _router: Router) {
+        private _router: Router, private _toastr: ToastrService) {
     }
 
     public ngOnInit(): void { }
@@ -22,6 +23,7 @@ export class CreateVacancyComponent implements OnInit {
             this._vacancyService.create(vacancy);
 
         observ.subscribe(_ => {
+            this._toastr.success('Vacancy was created successfully');
             this._router.navigate(['/vacancy/search']);
         });
     }

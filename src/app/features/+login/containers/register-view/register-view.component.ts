@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService, RegistrationForm } from '../../../../core/auth';
 import { UserService } from '../../services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-dashboard',
@@ -10,7 +11,9 @@ import { UserService } from '../../services/user.service';
 })
 export class RegisterViewComponent implements OnInit {
 
-    constructor(private _auth: AuthService, private _router: Router, private _userService: UserService) { }
+    constructor(
+        private _auth: AuthService, private _router: Router,
+        private _userService: UserService, private _toastr: ToastrService) { }
 
     public ngOnInit(): void {
         if (this._auth.isAuthenticated()) {
@@ -21,6 +24,7 @@ export class RegisterViewComponent implements OnInit {
     public register(value: RegistrationForm): void {
         this._userService.create(value).subscribe((user) => {
             if (user) {
+                this._toastr.success('You are registered successfully');
                 this._router.navigate(['/login']);
             }
         });

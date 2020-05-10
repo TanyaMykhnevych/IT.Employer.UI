@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { CompanyModule } from './features/+company/company.module';
@@ -22,6 +23,7 @@ import { MaterialModule } from './layout/material.module';
   imports: [
     BrowserModule,
     MaterialModule,
+    ToastrModule.forRoot(),
     HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
