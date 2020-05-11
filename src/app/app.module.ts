@@ -1,6 +1,6 @@
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -17,6 +17,9 @@ import { HomeModule } from './features/+home/home.module';
 import { LoginModule } from './features/+login';
 import { VacancyModule } from './features/+vacancy/vacancy.module';
 import { MaterialModule } from './layout/material.module';
+import { UserInfoService } from './core/auth';
+import { loadUserInfo } from './core/app-initializers/load-user-info.initializer';
+import { TeamModule } from './features/+team/team.module';
 
 
 @NgModule({
@@ -31,6 +34,7 @@ import { MaterialModule } from './layout/material.module';
     HomeModule,
     LoginModule.forRoot(),
     EmployeeModule.forRoot(),
+    TeamModule.forRoot(),
     CompanyModule.forRoot(),
     VacancyModule.forRoot(),
     TranslateModule.forRoot({
@@ -50,6 +54,12 @@ import { MaterialModule } from './layout/material.module';
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy,
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (userInfoService: UserInfoService) => loadUserInfo(userInfoService),
+      deps: [UserInfoService],
+      multi: true
     }
   ],
   bootstrap: [AppComponent]

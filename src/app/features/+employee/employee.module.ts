@@ -6,7 +6,8 @@ import { EmployeeRegisterComponent } from './containers/register/employee-regist
 import { EmployeesViewComponent } from './containers/search/employees-view.component';
 import { EmployeeRoutingModule } from './routes/employee-routing.module';
 import { EmployeeService } from './services/employee.service';
-
+import { EmployeeRegisterFormComponent } from './components/employee-register-form/employee-register-form.component';
+import { SharedModule } from '../+shared/shared.module';
 
 
 @NgModule({
@@ -16,10 +17,12 @@ import { EmployeeService } from './services/employee.service';
         CoreModule,
         ReactiveFormsModule,
         FormsModule,
+        SharedModule.forRoot(),
     ],
     declarations: [
         EmployeesViewComponent,
         EmployeeRegisterComponent,
+        EmployeeRegisterFormComponent,
     ],
     entryComponents: [
     ],

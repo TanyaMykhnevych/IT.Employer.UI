@@ -4,18 +4,24 @@ import { Team } from '../team';
 import { Characteristic } from './characteristic';
 import { Profession } from './profession.enum';
 import { Technology } from './technology.enum';
+import { Position } from './position.enum';
 
 export interface Employee extends BaseEntity {
     firstName: string;
     lastName: string;
     description?: string;
     birthDate?: Date;
+    imageUrl?: string;
 
     profession: Profession;
     position: Position;
     primaryTechnology: Technology;
     experienceYears: number;
     characteristics?: Characteristic[];
+
+    hourRate: number;
+    availableUntil: boolean;
+    inactive: boolean;
 
     email?: string;
     skype?: string;

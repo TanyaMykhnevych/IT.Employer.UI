@@ -1,0 +1,20 @@
+<form class="card" [formGroup]="form" (ngSubmit)="registerTeam($event)">
+    <div class="card-header">
+        <strong>Team Registration</strong>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="form-group col-sm-2">
+                <button type="button" class="btn btn-sm btn-primary" (click)="addMember()">Add member</button>
+            </div>
+        </div>
+    </div>
+    <ng-container *ngFor="let memberForm of membersFormArray.controls">
+        <hr>
+        <app-single-employee-register-form [form]="memberForm"></app-single-employee-register-form>
+    </ng-container>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+        <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+    </div>
+</form>

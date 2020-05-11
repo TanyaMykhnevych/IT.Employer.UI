@@ -6,6 +6,7 @@ import { EmployeeModule } from './features/+employee/employee.module';
 import { P404Component } from './features/+error/404.component';
 import { P500Component } from './features/+error/500.component';
 import { VacancyModule } from './features/+vacancy/vacancy.module';
+import { TeamModule } from './features/+team/team.module';
 
 export const routes: Routes = [
   {
@@ -28,6 +29,10 @@ export const routes: Routes = [
       {
         path: 'employees',
         loadChildren: () => EmployeeModule,
+      },
+      {
+        path: 'teams',
+        loadChildren: () => TeamModule,
       },
       {
         path: 'company',
