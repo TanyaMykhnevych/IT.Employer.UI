@@ -21,7 +21,7 @@ export class CompanyRegisterComponent implements OnInit {
 
     public onCompanySubmit(company: Company): void {
         const observ = company.id ?
-            this._companyService.update(company) :
+            this._companyService.update(company.id, company) :
             this._companyService.create(company);
 
         observ.subscribe(_ => {

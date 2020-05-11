@@ -6,7 +6,8 @@ import { AuthService } from '../../../../core/auth';
 
 @Component({
   selector: 'app-main',
-  templateUrl: './main.component.html'
+  templateUrl: './main.component.html',
+  styleUrls: ['main.component.scss']
 })
 export class MainComponent implements OnInit {
   public sidebarMinimized = false;

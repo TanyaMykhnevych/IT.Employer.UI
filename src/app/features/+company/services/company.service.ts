@@ -22,7 +22,7 @@ export class CompanyService {
             : of(SearchResponseUtils.getEmptySearchResponse<Company>());
     }
 
-    public getCompany(companyId: number): Observable<Company> {
+    public getCompany(companyId: string): Observable<Company> {
         return companyId ? this._http.get<Company>(`${AppSettings.apiHost}/company/${companyId}`) : of(null);
     }
 
@@ -31,8 +31,8 @@ export class CompanyService {
             .pipe(tap(comp => this._currentUserService.userCompanyId = comp.id));
     }
 
-    public update(company: Company): Observable<Company> {
-        return this._http.put<Company>(`${AppSettings.apiHost}/company`, company);
+    public update(id: string, company: Company): Observable<Company> {
+        return this._http.put<Company>(`${AppSettings.apiHost}/company/${id}`, company);
     }
 
     public delete(companyId: string): Observable<void> {

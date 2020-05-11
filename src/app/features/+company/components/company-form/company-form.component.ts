@@ -12,6 +12,7 @@ import { EmptyCompany } from '../../constants/empty-company.const';
 })
 export class CompanyFormComponent implements OnInit {
     @Input() public company: Company = EmptyCompany;
+    @Input() public editable: boolean = true;
     @Output() public submit: EventEmitter<Company> = new EventEmitter<Company>();
     public form: FormGroup;
     public submitted = false;
@@ -35,6 +36,9 @@ export class CompanyFormComponent implements OnInit {
             size: new FormControl(this.company.size, [Validators.required]),
         });
         this._fillEnumValues();
+        if (!this.editable) {
+            this.form.disable();
+        }
     }
 
     public done(e: Event): void {
@@ -42,6 +46,11 @@ export class CompanyFormComponent implements OnInit {
         this.submitted = true;
 
         this._submit();
+    }
+
+    public edit(): void {
+        this.form.enable();
+        this.editable = true;
     }
 
     @Validate()

@@ -1,0 +1,7 @@
+<app-company-form-component *ngIf="company" [company]="company" (submit)="onCompanySubmit($event)" [editable]="false">
+</app-company-form-component>
+<div *ngIf="!company" class="no-company">
+    <h2>{{'company.register_your_company' | translate}}</h2>
+    <button type="button" class="btn btn-primary active mt-3"
+        (click)="register()">{{'register_now' | translate}}</button>
+</div>

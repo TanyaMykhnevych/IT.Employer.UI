@@ -1,18 +1,26 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { INavData } from '@coreui/angular';
 import { cloneDeep } from 'lodash';
+import { Subject } from 'rxjs/';
+import { takeUntil } from 'rxjs/operators';
 import { CurrentUserService } from '../../../core/permission/services';
 import { navItems } from '../_nav';
 
 @Injectable()
-export class NavMenuService {
-    private _navMenu  = [];
+export class NavMenuService implements OnDestroy {
+    private _navMenu = [];
+    private _destroy$: Subject<void> = new Subject<void>();
 
     constructor(private _currentUserService: CurrentUserService) {
         this._rebuildMenu();
-        this._currentUserService.userInfoChanged.subscribe(_ => {
+        this._currentUserService.userInfoChanged.pipe(takeUntil(this._destroy$)).subscribe(_ => {
             this._rebuildMenu();
         });
+    }
+
+    public ngOnDestroy(): void {
+        this._destroy$.next();
+        this._destroy$.complete();
     }
 
     public get navMenu(): INavData[] {

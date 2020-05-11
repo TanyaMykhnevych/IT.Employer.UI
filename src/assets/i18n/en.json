@@ -29,7 +29,8 @@
         "size": "Size",
         "type": "Type",
         "website": "Website",
-        "actions": "Actions"
+        "actions": "Actions",
+        "register_your_company": "Here your registered company will be displayed"
     },
     "vacancy": {
         "vacancies": "Vacancies",

@@ -10,6 +10,7 @@ import { CompanyRegisterComponent } from './containers/register/company-register
 import { CompaniesViewComponent } from './containers/view/companies-view.component';
 import { CompanyRoutingModule } from './routes/company-routing.module';
 import { CompanyService } from './services/company.service';
+import { MyCompanyComponent } from './containers/my-company/my-company.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { CompanyService } from './services/company.service';
         CompanyListComponent,
         CompaniesViewComponent,
         CompanyFormComponent,
+        MyCompanyComponent,
     ],
     entryComponents: [
     ],
