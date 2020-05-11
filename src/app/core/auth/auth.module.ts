@@ -5,6 +5,7 @@ import { AuthService, TokenService } from './services';
 import { AuthGuard } from './guards';
 import { HTTP_INTERCEPTORS } from '../../../../node_modules/@angular/common/http';
 import { AuthInterceptor } from './services/auth.interceptor';
+import { UserInfoService } from './services/user-info.service';
 
 @NgModule({
     imports: [
@@ -21,6 +22,7 @@ export class AuthModule {
                 TokenService,
                 AuthGuard,
                 { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+                UserInfoService
             ],
         };
     }

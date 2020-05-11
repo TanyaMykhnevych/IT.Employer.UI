@@ -62,7 +62,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Teams',
-    url: '/buttons',
+    url: '/teams',
     icon: 'icon-cursor',
     badge: {
       variant: 'success',
@@ -71,12 +71,12 @@ export const navItems: INavData[] = [
     children: [
       {
         name: 'Register',
-        url: '',
+        url: '/teams/register',
         icon: 'icon-cursor'
       },
       {
         name: 'Search',
-        url: '',
+        url: '/teams/search',
         icon: 'icon-graph'
       },
     ]

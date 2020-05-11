@@ -1,0 +1,136 @@
+<form class="card" [formGroup]="form" (ngSubmit)="registerEmployee($event)">
+    <div class="card-header">
+        <strong>Employee Registration</strong>
+    </div>
+    <app-single-employee-register-form [form]="form"></app-single-employee-register-form>
+    <!-- <div class="card-body">
+        <div class="row">
+            <div class="form-group col-sm-4">
+                <label for="firstName">First Name</label>
+                <input formControlName="firstName" id="firstName" type="text" class="form-control"
+                    placeholder="Enter first name">
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="lastName">Last Name</label>
+                <input type="text" formControlName="lastName" id="lastName" class="form-control"
+                    placeholder="Enter last name">
+            </div>
+
+            <div class="form-group col-sm-4">
+                <label for="birthDate">First Name</label>
+                <input formControlName="birthDate" id="birthDate" type="date" class="form-control"
+                    placeholder="Enter birth date">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <label for="description">Description</label>
+                <input type="text" formControlName="description" class="form-control" id="description"
+                    placeholder="Enter employee description">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <label for="imageUrl">Image url</label>
+                <input type="text" formControlName="imageUrl" class="form-control" id="imageUrl"
+                    placeholder="Enter employee description">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-4">
+                <label for="profession">{{'vacancy.profession' | translate}}</label>
+                <select class="form-control" id="profession" formControlName="profession">
+                    <option *ngFor="let profession of professions" [value]="profession.key">{{profession.value}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="position">{{'vacancy.position' | translate}}</label>
+                <select class="form-control" id="position" formControlName="position">
+                    <option *ngFor="let position of positions" [value]="position.key">{{position.value}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="primaryTechnology">{{'vacancy.primary_technology' | translate}}</label>
+                <select class="form-control" id="primaryTechnology" formControlName="primaryTechnology">
+                    <option *ngFor="let technology of technologies" [value]="technology.key">{{technology.value}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-4">
+                <label for="description">Email</label>
+                <input type="text" formControlName="email" id="email" class="form-control"
+                    placeholder="employee@mail.com">
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="description">Skype</label>
+                <input type="text" formControlName="skype" id="skype" class="form-control"
+                    placeholder="Enter skype login">
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="description">LinkedIn</label>
+                <input type="text" formControlName="linkedIn" id="linkedIn" class="form-control"
+                    placeholder="Enter linkedIn username">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-4">
+                <label for="experienceYears">{{'vacancy.experience' | translate}}</label>
+                <input type="number" [min]="0" [max]="80" formControlName="experienceYears" class="form-control"
+                    id="experienceYears" placeholder="Enter experience years from">
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="hourRate">Hour rate</label>
+                <input type="number" [min]="0" [max]="80" formControlName="hourRate" class="form-control" id="hourRate"
+                    placeholder="Enter hour rate">
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="availableUntil">Employee available until</label>
+                <input type="date" formControlName="availableUntil" class="form-control" id="availableUntil"
+                    placeholder="Enter date">
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 30px;">
+            <div class="form-group col-sm-1">
+                <label>Characteristics</label>
+            </div>
+            <div class="form-group col-sm-2">
+                <button type="button" class="btn btn-sm btn-primary" (click)="addCharacteristic()">Add
+                    Characteristic</button>
+            </div>
+        </div>
+
+        <div class="row" *ngFor="let characteristic of characteristicsArray.controls; let i = index">
+            <div class="col-sm-12" [formGroup]="characteristic">
+                <div class="row">
+                    <div class="form-group col-sm-4">
+                        <input type="text" formControlName="author" class="form-control" placeholder="Enter author">
+                    </div>
+                    <div class="col-sm-4">
+                        <i style="cursor: pointer;" class="fa fa-lg fa-times" (click)="removeCharacteristic(i)"
+                            title="Remove characteristic"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-4">
+                        <textarea formControlName="text" class="form-control" placeholder="Text"></textarea>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div> -->
+    <div class="card-footer">
+        <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+        <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+    </div>
+</form>
