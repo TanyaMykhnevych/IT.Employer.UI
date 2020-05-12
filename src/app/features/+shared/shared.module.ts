@@ -3,6 +3,7 @@ import { SingleEmployeeRegisterFormComponent } from './components/single-employe
 import { CommonModule } from '@angular/common';
 import { CoreModule } from '../../core/core.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { PricePolicyService } from './services/price-policy/price-policy.service';
 
 @NgModule({
     imports: [
@@ -22,6 +23,7 @@ export class SharedModule {
     public static forRoot(): ModuleWithProviders {
         return {
             ngModule: SharedModule,
+            providers: [PricePolicyService]
         };
     }
 }
