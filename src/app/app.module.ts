@@ -20,6 +20,8 @@ import { MaterialModule } from './layout/material.module';
 import { UserInfoService } from './core/auth';
 import { loadUserInfo } from './core/app-initializers/load-user-info.initializer';
 import { TeamModule } from './features/+team/team.module';
+import { SettingsService } from './core/settings/services/settings.service';
+import { loadSettings } from './core/app-initializers/load-settings.initializer';
 
 
 @NgModule({
@@ -59,6 +61,12 @@ import { TeamModule } from './features/+team/team.module';
       provide: APP_INITIALIZER,
       useFactory: (userInfoService: UserInfoService) => loadUserInfo(userInfoService),
       deps: [UserInfoService],
+      multi: true
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (settingsService: SettingsService) => loadSettings(settingsService),
+      deps: [SettingsService],
       multi: true
     }
   ],

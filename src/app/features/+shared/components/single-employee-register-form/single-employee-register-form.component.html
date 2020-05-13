@@ -81,7 +81,7 @@
                 id="experienceYears" placeholder="Enter experience years from">
         </div>
         <div class="form-group col-sm-4">
-            <label for="hourRate">Hour rate ($)</label>
+            <label for="hourRate">Hour rate ($) <b>{{hiringHourRateInformation}}</b></label>
             <input type="number" [min]="0" [max]="80" formControlName="hourRate" class="form-control" id="hourRate"
                 placeholder="Enter hour rate ($)">
         </div>

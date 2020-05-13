@@ -20,6 +20,7 @@ export interface Employee extends BaseEntity {
     characteristics?: Characteristic[];
 
     hourRate: number;
+    hiringHourRate?: number;
     availableUntil: boolean;
     inactive: boolean;
 
