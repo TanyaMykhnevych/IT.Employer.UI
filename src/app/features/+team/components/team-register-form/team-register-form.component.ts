@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Team, Employee } from '../../../../models';
 import { EmptyTeam } from '../../constants/empty-team.const';
@@ -11,24 +11,55 @@ import { EmptyEmployee } from '../../../+employee/constants/empty-employee.const
 export class TeamRegisterFormComponent implements OnInit {
     @Input() public team: Team = EmptyTeam;
 
+    @Output() public teamRegister = new EventEmitter<Team>();
+
     public form: FormGroup;
 
     constructor(private formBuilder: FormBuilder) { }
 
     public ngOnInit(): void {
         this.form = this.formBuilder.group({
+            name: new FormControl(this.team.name, [Validators.required]),
+            description: new FormControl(this.team.description, [Validators.maxLength(2000)]),
+            availableUntil: new FormControl((this.team.members[0] || EmptyEmployee).availableUntil, [Validators.required]),
             members: this.createEmployeesFormArray()
         });
     }
 
     public registerTeam(event: Event): void {
         event.preventDefault();
+
+        const formValue = this.form.value;
+        const result = { ...this.team };
+
+        result.name = formValue.name;
+        result.description = formValue.description;
+        result.members = [];
+
+        for (const member of <Employee[]>formValue.members) {
+            member.availableUntil = formValue.availableUntil;
+            member.position = +member.position;
+            member.profession = +member.profession;
+            member.primaryTechnology = +member.primaryTechnology;
+
+            result.members.push(member);
+        }
+
+        this.teamRegister.emit(result);
     }
 
     public addMember(): void {
         const newEmployeeFormGroup = this.createEmployeeFormGroup(EmptyEmployee);
 
-        this.membersFormArray.push(newEmployeeFormGroup)
+        this.membersFormArray.push(newEmployeeFormGroup);
+    }
+
+    public removeMember(index: number): void {
+        this.membersFormArray.removeAt(index);
+    }
+
+    public get teamSize(): number {
+        return this.membersFormArray.length;
     }
 
     public get membersFormArray(): FormArray {
