@@ -4,14 +4,46 @@
     </div>
     <div class="card-body">
         <div class="row">
+            <div class="form-group col-sm-12">
+                <label for="name">Team name</label>
+                <input type="text" formControlName="name" id="name" class="form-control"
+                    placeholder="Enter fancy team name">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <label for="description">Team description</label>
+                <textarea type="text" formControlName="description" id="description" class="form-control"
+                    placeholder="Enter team description"></textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-4">
+                <label for="availableUntil">Team available until</label>
+                <input type="date" formControlName="availableUntil" class="form-control" id="availableUntil"
+                    placeholder="Enter date">
+            </div>
+        </div>
+
+        <div class="row">
             <div class="form-group col-sm-2">
                 <button type="button" class="btn btn-sm btn-primary" (click)="addMember()">Add member</button>
             </div>
         </div>
     </div>
-    <ng-container *ngFor="let memberForm of membersFormArray.controls">
+    <ng-container *ngFor="let memberForm of membersFormArray.controls; let i = index">
         <hr>
-        <app-single-employee-register-form [form]="memberForm"></app-single-employee-register-form>
+        <div class="row" style="padding-left: 25px;">
+            <div class="form-group col-sm-4">
+                <button type="button" class="btn btn-md btn-danger" title="Remove member" (click)="removeMember(i)">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </div>
+        </div>
+        <app-single-employee-register-form [form]="memberForm" [teamSize]="teamSize">
+        </app-single-employee-register-form>
     </ng-container>
     <div class="card-footer">
         <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
