@@ -36,7 +36,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'My Teams',
-    url: '',
+    url: '/teams/my-teams',
     icon: 'icon-settings',
   },
   {

@@ -1,0 +1,13 @@
+<div class="wrap teams-page">
+    <div>
+        <h2>My Teams</h2>
+    </div>
+    <div class="teams-search">
+        <app-team-search-form [totalCount]="totalCount" (valueChanges)="onSearch($event)" [totalCount]="totalCount"
+            [searchParameters]="searchParameters">
+            <h6 total> {{'found' | translate }}: {{totalCount}}</h6>
+            <app-team-list table [teams]="teams">
+            </app-team-list>
+        </app-team-search-form>
+    </div>
+</div>

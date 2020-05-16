@@ -1,0 +1,15 @@
+<div class="teams-container mat-elevation-z8">
+    <div class="loading-indicator" *ngIf="isLoading">
+        <mat-spinner mode="indeterminate"></mat-spinner>
+    </div>
+
+    <div *ngIf="!teams || !teams.length" class="empty-teams">
+        <h2>
+            {{'empty_teams' | translate}}
+        </h2>
+    </div>
+
+    <app-team-list-item *ngFor="let team of teams" [team]="team" [editable]="editable">
+    </app-team-list-item>
+
+</div>

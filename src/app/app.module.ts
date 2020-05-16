@@ -22,6 +22,7 @@ import { loadUserInfo } from './core/app-initializers/load-user-info.initializer
 import { TeamModule } from './features/+team/team.module';
 import { SettingsService } from './core/settings/services/settings.service';
 import { loadSettings } from './core/app-initializers/load-settings.initializer';
+import { CurrentUserService } from './core/permission/services';
 
 
 @NgModule({
@@ -68,7 +69,7 @@ import { loadSettings } from './core/app-initializers/load-settings.initializer'
       useFactory: (settingsService: SettingsService) => loadSettings(settingsService),
       deps: [SettingsService],
       multi: true
-    }
+    },
   ],
   bootstrap: [AppComponent]
 })

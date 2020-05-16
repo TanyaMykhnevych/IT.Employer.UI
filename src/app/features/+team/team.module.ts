@@ -5,9 +5,14 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TeamService } from './services/team.service';
 import { TeamRoutingModule } from './routes/team-routing.module';
 import { TeamRegisterComponent } from './containers/register/team-register.component';
-import { TeamsViewComponent } from './containers/search/teams-view.component';
+import { TeamsViewComponent } from './containers/view/teams-view.component';
 import { TeamRegisterFormComponent } from './components/team-register-form/team-register-form.component';
 import { SharedModule } from '../+shared/shared.module';
+import { TeamSearchFormComponent } from './components/team-search-form/team-search-form.component';
+import { TeamListComponent } from './components/team-list/team-list.component';
+import { TeamListItemComponent } from './components/team-list-item/team-list-item.component';
+import { MaterialModule } from '../../layout/material.module';
+import { MyTeamsComponent } from './containers/my-teams/my-teams.component';
 
 @NgModule({
     imports: [
@@ -16,12 +21,18 @@ import { SharedModule } from '../+shared/shared.module';
         CoreModule,
         ReactiveFormsModule,
         FormsModule,
-        SharedModule.forRoot()
+        SharedModule.forRoot(),
+        MaterialModule,
     ],
     declarations: [
         TeamsViewComponent,
         TeamRegisterComponent,
         TeamRegisterFormComponent,
+        TeamsViewComponent,
+        TeamSearchFormComponent,
+        TeamListComponent,
+        TeamListItemComponent,
+        MyTeamsComponent,
     ],
     entryComponents: [
     ],

@@ -44,9 +44,23 @@
         "edit": "Edit",
         "apply": "APPLY"
     },
+    "team": {
+        "teams": "Teams",
+        "name": "Name",
+        "company_name": "Company",
+        "team_name": "Team name",
+        "created": "Creation Date",
+        "number_of_members": "Number of Members",
+        "max_number_of_members": "Max Number of Members",
+        "min_number_of_members": "Min Number of Members",
+        "image": "Image",
+        "edit": "Edit",
+        "view": "VIEW"
+    },
     "all": "All",
     "search_by_name": "Search by name",
     "found": "Found",
     "empty_companies": "No companies found",
-    "empty_vacancies": "No vacancies found"
+    "empty_vacancies": "No vacancies found",
+    "empty_teams": "No teams found"
 }

@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CurrentUserService } from '../../../../core/permission/services';
 import { Company } from '../../../../models';
 import { CompanyService } from '../../services/company.service';
+import { UserInfoService } from '../../../../core/auth';
 
 
 @Component({
@@ -13,14 +14,16 @@ import { CompanyService } from '../../services/company.service';
 })
 export class MyCompanyComponent implements OnInit {
     public company: Company;
+    public isLoaded: boolean = false;
 
     constructor(private _companyService: CompanyService,
         private _router: Router, private _toastr: ToastrService,
-        private _currentUserService: CurrentUserService) {
+        private _currentUserService: CurrentUserService,
+        private _userInfoService: UserInfoService) {
     }
 
     public ngOnInit(): void {
-        this._loadCompany();
+        this._userInfoService.loadUserInfo().subscribe(info => this._loadCompany());
     }
 
     public onCompanySubmit(company: Company): void {
@@ -40,7 +43,10 @@ export class MyCompanyComponent implements OnInit {
         if (userInfo && userInfo.companyId) {
             this._companyService.getCompany(userInfo.companyId).subscribe(_ => {
                 this.company = _;
+                this.isLoaded = true;
             });
+        } else {
+            this.isLoaded = true;
         }
 
     }
