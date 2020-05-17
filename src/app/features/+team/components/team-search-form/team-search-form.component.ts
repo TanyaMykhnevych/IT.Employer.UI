@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Subject } from 'rxjs/';
 import { takeUntil } from 'rxjs/operators';
+import { TechnologyOptionDescriptions } from '../../../../core/constants/technology-option-descriptions.const';
 import { TeamSearchParameter, VacancySearchParameter } from '../../../../models';
 import { TeamDefaultSearchParameter } from '../../constants/team-default-search.const';
 
@@ -18,6 +19,7 @@ export class TeamSearchFormComponent implements OnInit, OnDestroy {
     @Input() public totalCount: number = 0;
     public searchForm: FormGroup;
     @ViewChild(MatPaginator, { static: true }) public paginator: MatPaginator;
+    public readonly technologies = TechnologyOptionDescriptions;
 
     private _searchParameters: TeamSearchParameter = TeamDefaultSearchParameter;
     private _destroy$: Subject<void> = new Subject<void>();
@@ -29,6 +31,7 @@ export class TeamSearchFormComponent implements OnInit, OnDestroy {
             searchTerm: new FormControl(this.searchParameters.searchTerm),
             maxNumberOfMembers: new FormControl(this.searchParameters.maxNumberOfMembers),
             minNumberOfMembers: new FormControl(this.searchParameters.minNumberOfMembers),
+            technologies: this.searchParameters.technologies ? new FormControl(this.searchParameters.technologies) : null,
         });
         this._setPagination();
 
@@ -49,6 +52,7 @@ export class TeamSearchFormComponent implements OnInit, OnDestroy {
                 searchTerm: this._searchParameters.searchTerm ? this._searchParameters.searchTerm : '',
                 maxNumberOfMembers: this._searchParameters.maxNumberOfMembers ? Number(this._searchParameters.maxNumberOfMembers) : '',
                 minNumberOfMembers: this._searchParameters.minNumberOfMembers ? Number(this._searchParameters.minNumberOfMembers) : '',
+                technologies: this._searchParameters.technologies ? this._searchParameters.technologies.map(t => +t) : null,
             }, { emitEvent: false });
         }
         this._setPagination();
@@ -97,6 +101,7 @@ export class TeamSearchFormComponent implements OnInit, OnDestroy {
             maxNumberOfMembers: param.maxNumberOfMembers,
             searchTerm: param.searchTerm,
             companyId: param.companyId,
+            technologies: param.technologies && param.technologies.length ? param.technologies : null,
         };
     }
 
@@ -117,6 +122,10 @@ export class TeamSearchFormComponent implements OnInit, OnDestroy {
         this.searchForm.controls.searchTerm.valueChanges.pipe(takeUntil(this._destroy$)).subscribe((value: string) => {
             this.page = 0;
             this.filter({ searchTerm: value });
+        });
+        this.searchForm.controls.technologies.valueChanges.pipe(takeUntil(this._destroy$)).subscribe((value: number[]) => {
+            this.page = 0;
+            this.filter({ technologies: value });
         });
     }
 }

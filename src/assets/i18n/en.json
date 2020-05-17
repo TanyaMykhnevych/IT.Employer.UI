@@ -50,6 +50,7 @@
         "company_name": "Company",
         "team_name": "Team name",
         "created": "Creation Date",
+        "technologies": "Technologies",
         "number_of_members": "Number of Members",
         "max_number_of_members": "Max Number of Members",
         "min_number_of_members": "Min Number of Members",

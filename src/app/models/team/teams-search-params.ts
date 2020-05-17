@@ -5,4 +5,5 @@ export interface TeamSearchParameter extends ISearchQueryParameter {
     minNumberOfMembers?: number;
     maxNumberOfMembers?: number;
     searchTerm?: string;
+    technologies?: number[];
 }

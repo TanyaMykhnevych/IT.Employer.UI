@@ -16,11 +16,17 @@
                     </div>
                 </div>
             </div>
-            <br/>
+            <br/>                      
+            <mat-form-field class="technologies-holder">
+                <mat-select placeholder="{{ 'team.technologies' | translate }}" formControlName="technologies" multiple>
+                    <mat-option *ngFor="let profession of technologies" [value]="profession.key">{{profession.value}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
             <mat-form-field class="search-holder">
                 <input matInput type="search" id="searchBox" placeholder="{{'search_by_name' | translate}}"
                     formControlName="searchTerm">
-            </mat-form-field>
+            </mat-form-field>  
         </div>
         <div class="card">
             <div class="card-header">

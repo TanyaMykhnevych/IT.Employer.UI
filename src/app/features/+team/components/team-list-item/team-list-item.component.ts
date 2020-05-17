@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TeamSearchItem } from '../../../../models';
+import { TeamSearchItem, Technology } from '../../../../models';
+import { TechnologyOptionDescriptions } from '../../../../core/constants/technology-option-descriptions.const';
 
 @Component({
     selector: 'app-team-list-item',
@@ -14,4 +15,15 @@ export class TeamListItemComponent implements OnInit {
     constructor() { }
 
     public ngOnInit(): void { }
+
+    public getTechnologies(technologies: Technology[]): string {
+        let result = '';
+        technologies.forEach(t => {
+            result += ` ${TechnologyOptionDescriptions.find(d => d.key === t).value},`;
+        });
+
+        result = result.trim();
+
+        return result.substring(0, result.length - 1);
+    }
 }

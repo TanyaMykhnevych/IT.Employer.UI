@@ -12,14 +12,19 @@
             <b>{{'team.number_of_members' | translate}}:</b> {{team?.numberOfMembers}}
         </p>
         <p>
-            <b>{{'team.created' | translate}}:</b>  {{team?.createdOn | date: 'MM/dd/yyyy' | lowercase}}
+            <b>{{'team.created' | translate}}:</b> {{team?.createdOn | date: 'MM/dd/yyyy' | lowercase}}
+        </p>
+        <p *ngIf="team?.technologies && team.technologies.length">
+            <b>{{'team.technologies' | translate}}: </b> {{getTechnologies(team.technologies)}}
         </p>
         <p>
             {{team?.description}}
         </p>
     </mat-card-content>
     <mat-card-actions>
-        <button *ngIf="!editable" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> {{'team.view' | translate}}</button>
-        <button *ngIf="editable" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> {{'team.edit' | translate}}</button>
+        <button *ngIf="!editable" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>
+            {{'team.view' | translate}}</button>
+        <button *ngIf="editable" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>
+            {{'team.edit' | translate}}</button>
     </mat-card-actions>
 </mat-card>
