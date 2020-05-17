@@ -26,7 +26,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'My Offers',
-    url: '',
+    url: '/offers/my',
     icon: 'icon-layers',
   },
   {

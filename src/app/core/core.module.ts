@@ -6,10 +6,12 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { AuthModule } from './auth';
+import { ChatModule } from './chat/chat.module';
 
 @NgModule({
     imports: [
         AuthModule.forRoot(),
+        ChatModule.forRoot(),
         TranslateModule,
         AppAsideModule,
         AppBreadcrumbModule.forRoot(),

@@ -23,6 +23,7 @@ import { TeamModule } from './features/+team/team.module';
 import { SettingsService } from './core/settings/services/settings.service';
 import { loadSettings } from './core/app-initializers/load-settings.initializer';
 import { CurrentUserService } from './core/permission/services';
+import { OffersModule } from './features/+offers/offers.module';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { CurrentUserService } from './core/permission/services';
     TeamModule.forRoot(),
     CompanyModule.forRoot(),
     VacancyModule.forRoot(),
+    OffersModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

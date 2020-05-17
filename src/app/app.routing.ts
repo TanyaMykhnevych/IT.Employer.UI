@@ -7,6 +7,7 @@ import { P404Component } from './features/+error/404.component';
 import { P500Component } from './features/+error/500.component';
 import { VacancyModule } from './features/+vacancy/vacancy.module';
 import { TeamModule } from './features/+team/team.module';
+import { OffersModule } from './features/+offers/offers.module';
 
 export const routes: Routes = [
   {
@@ -41,6 +42,10 @@ export const routes: Routes = [
       {
         path: 'vacancy',
         loadChildren: () => VacancyModule,
+      },
+      {
+        path: 'offers',
+        loadChildren: () => OffersModule,
       },
     ]
   },
