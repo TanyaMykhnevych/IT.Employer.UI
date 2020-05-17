@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { EnumUtils } from '../../../../core/enum';
+import { PositionOptionDescriptions } from '../../../../core/constants/positions-option-descriptions.const';
+import { ProfessionOptionDescriptions } from '../../../../core/constants/profession-option-descriptions.const';
+import { TechnologyOptionDescriptions } from '../../../../core/constants/technology-option-descriptions.const';
 import { Validate } from '../../../../core/form/decorators';
-import { Position, Profession, Technology, Vacancy } from '../../../../models';
+import { Vacancy } from '../../../../models';
 import { EmptyVacancy } from '../../constants/empty-vacancy.const';
 
 @Component({
@@ -15,12 +17,9 @@ export class VacancyFormComponent implements OnInit {
     public form: FormGroup;
     public submitted = false;
 
-    public Profession = Profession;
-    public Position = Position;
-    public Technology = Technology;
-    public professions: number[] = [];
-    public positions: number[] = [];
-    public technologies: number[] = [];
+    public readonly professions = ProfessionOptionDescriptions;
+    public readonly positions = PositionOptionDescriptions;
+    public readonly technologies = TechnologyOptionDescriptions;
 
     constructor(private _builder: FormBuilder) { }
 
@@ -34,7 +33,6 @@ export class VacancyFormComponent implements OnInit {
             primaryTechnology: new FormControl(this.vacancy.primaryTechnology, [Validators.required]),
             experienceYears: new FormControl(this.vacancy.experienceYears, [Validators.required]),
         });
-        this._fillEnumValues();
     }
 
     public done(e: Event): void {
@@ -52,11 +50,5 @@ export class VacancyFormComponent implements OnInit {
         result.primaryTechnology = +result.primaryTechnology;
 
         this.submit.emit(result);
-    }
-
-    private _fillEnumValues(): void {
-        this.positions = EnumUtils.getValues(Position);
-        this.professions = EnumUtils.getValues(Profession);
-        this.technologies = EnumUtils.getValues(Technology);
     }
 }

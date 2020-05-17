@@ -7,21 +7,21 @@
                     <mat-form-field>
                         <mat-select placeholder="{{ 'vacancy.profession' | translate }}" formControlName="profession">
                             <mat-option value=''>{{ 'all' | translate }}</mat-option>
-                            <mat-option *ngFor="let profession of professions" [value]="profession">{{Profession[profession]}}
+                            <mat-option *ngFor="let profession of professions" [value]="profession.key">{{profession.value}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
                     <mat-form-field>
                         <mat-select placeholder="{{ 'vacancy.position' | translate }}" formControlName="position">
                             <mat-option value=''>{{ 'all' | translate }}</mat-option>
-                            <mat-option *ngFor="let position of positions" [value]="position">{{Position[position]}}
+                            <mat-option *ngFor="let position of positions" [value]="position.key">{{position.value}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
                     <mat-form-field>
                         <mat-select placeholder="{{ 'vacancy.primary_technology' | translate }}" formControlName="primaryTechnology">
                             <mat-option value=''>{{ 'all' | translate }}</mat-option>
-                            <mat-option *ngFor="let technology of technologies" [value]="technology">{{Technology[technology]}}
+                            <mat-option *ngFor="let technology of technologies" [value]="technology.key">{{technology.value}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>

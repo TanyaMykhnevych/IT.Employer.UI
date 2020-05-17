@@ -9,5 +9,5 @@ export const PositionOptionDescriptions: KeyValue<Position, string>[] = [
     { key: Position.Middle, value: 'Middle' },
     { key: Position.Senior, value: 'Senior' },
 
-    { key: Position.None, value: 'None' },
+    { key: Position.Other, value: 'Other' },
 ];

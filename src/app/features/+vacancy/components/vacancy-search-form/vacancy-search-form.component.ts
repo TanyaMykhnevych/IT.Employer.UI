@@ -2,10 +2,12 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } 
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Subject } from 'rxjs/';
-import { EnumUtils } from '../../../../core/enum';
-import { Position, Profession, Technology, VacancySearchParameter } from '../../../../models';
-import { VacancyDefaultSearchParameter } from '../../constants/vacancy-default-search.const';
 import { takeUntil } from 'rxjs/operators';
+import { PositionOptionDescriptions } from '../../../../core/constants/positions-option-descriptions.const';
+import { ProfessionOptionDescriptions } from '../../../../core/constants/profession-option-descriptions.const';
+import { TechnologyOptionDescriptions } from '../../../../core/constants/technology-option-descriptions.const';
+import { VacancySearchParameter } from '../../../../models';
+import { VacancyDefaultSearchParameter } from '../../constants/vacancy-default-search.const';
 
 
 @Component({
@@ -15,12 +17,9 @@ import { takeUntil } from 'rxjs/operators';
 })
 
 export class VacancySearchFormComponent implements OnInit, OnDestroy {
-    public Profession = Profession;
-    public Position = Position;
-    public Technology = Technology;
-    public professions: number[] = [];
-    public positions: number[] = [];
-    public technologies: number[] = [];
+    public readonly professions = ProfessionOptionDescriptions;
+    public readonly positions = PositionOptionDescriptions;
+    public readonly technologies = TechnologyOptionDescriptions;
 
     @Output() public valueChanges: EventEmitter<VacancySearchParameter> = new EventEmitter<VacancySearchParameter>();
     @Input() public totalCount: number = 0;
@@ -39,7 +38,6 @@ export class VacancySearchFormComponent implements OnInit, OnDestroy {
             primaryTechnology: new FormControl(this.searchParameters.primaryTechnology),
         });
         this._setPagination();
-        this._fillEnumValues();
 
         this._emit(this.searchForm.value);
         this._subscribeControlValuesChages();
@@ -126,11 +124,5 @@ export class VacancySearchFormComponent implements OnInit, OnDestroy {
             this.page = 0;
             this.filter({ profession: value });
         });
-    }
-
-    private _fillEnumValues(): void {
-        this.positions = EnumUtils.getValues(Position);
-        this.professions = EnumUtils.getValues(Profession);
-        this.technologies = EnumUtils.getValues(Technology);
     }
 }

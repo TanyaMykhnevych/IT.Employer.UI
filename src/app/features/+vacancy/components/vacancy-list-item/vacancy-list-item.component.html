@@ -7,20 +7,22 @@
     <img mat-card-image [src]="vacancy?.image ? vacancy?.image : '../../../../../assets/img/vacancy/vacancy.png'">
     <mat-card-content>
         <p>
-            <b>{{'vacancy.profession' | translate}}:</b> {{Profession[vacancy?.profession]}}
+            <b>{{'vacancy.profession' | translate}}:</b> {{getProfession(vacancy?.profession)}}
         </p>
         <p>
-            <b>{{'vacancy.position' | translate}}:</b> {{Position[vacancy?.position]}}
+            <b>{{'vacancy.position' | translate}}:</b> {{getPosition(vacancy?.position)}}
         </p>
         <p>
-            <b>{{'vacancy.primary_technology' | translate}}:</b> {{Technology[vacancy?.primaryTechnology]}}
+            <b>{{'vacancy.primary_technology' | translate}}:</b> {{getTechnology(vacancy?.primaryTechnology)}}
         </p>
         <p>
             {{vacancy?.description}}
         </p>
     </mat-card-content>
     <mat-card-actions>
-        <button *ngIf="!editable" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> {{'vacancy.apply' | translate}}</button>
-        <button *ngIf="editable" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> {{'vacancy.edit' | translate}}</button>
+        <button *ngIf="!editable" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>
+            {{'vacancy.apply' | translate}}</button>
+        <button *ngIf="editable" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>
+            {{'vacancy.edit' | translate}}</button>
     </mat-card-actions>
 </mat-card>
