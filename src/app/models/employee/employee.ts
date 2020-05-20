@@ -21,7 +21,7 @@ export interface Employee extends BaseEntity {
 
     hourRate: number;
     hiringHourRate?: number;
-    availableUntil: boolean;
+    availableUntil: Date;
     inactive: boolean;
 
     email?: string;

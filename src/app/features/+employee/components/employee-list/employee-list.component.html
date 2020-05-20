@@ -1,0 +1,14 @@
+<div class="employees-container mat-elevation-z8">
+    <div class="loading-indicator" *ngIf="isLoading">
+        <mat-spinner mode="indeterminate"></mat-spinner>
+    </div>
+
+    <div *ngIf="!employees || !employees.length" class="empty-teams">
+        <h2>
+            {{'empty_employees' | translate}}
+        </h2>
+    </div>
+
+    <app-employee-list-item *ngFor="let employee of employees" [employee]="employee" [editable]="editable">
+    </app-employee-list-item>
+</div>

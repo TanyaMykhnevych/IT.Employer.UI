@@ -5,10 +5,17 @@ import { SettingsStoreService } from '../../../../core/settings/services/setting
 export class PricePolicyService {
     constructor (private settingsStore: SettingsStoreService) { }
 
-    public calculateHiringHourRate(hourRate: number, teamSize: number) {
+    public calculateHiringHourRate(hourRate: number, teamSize: number): number {
         const extraChargeCoefficient = this.getExtraChargeCoefficient(teamSize);
 
-        return Math.round(hourRate * (1 + extraChargeCoefficient));
+        return this.getPriceWithExtraCharge(hourRate, extraChargeCoefficient);
+    }
+
+    public calculateTeamHiringHourRate(hourRates: number[]): number {
+        const extraChargeCoefficient = this.getExtraChargeCoefficient(hourRates.length);
+        const sumHourRate = hourRates.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+
+        return this.getPriceWithExtraCharge(sumHourRate, extraChargeCoefficient);
     }
 
     public getExtraChargeCoefficient(teamSize: number): number {
@@ -25,5 +32,9 @@ export class PricePolicyService {
         }
 
         return 0;
+    }
+
+    private getPriceWithExtraCharge(rate: number, extraChargeCoefficient: number): number {
+        return Math.round(rate * (1 + extraChargeCoefficient));
     }
 }

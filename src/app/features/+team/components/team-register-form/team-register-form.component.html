@@ -1,6 +1,6 @@
 <form class="card" [formGroup]="form" (ngSubmit)="registerTeam($event)">
     <div class="card-header">
-        <strong>Team Registration</strong>
+        <strong>Team Registration <span *ngIf="teamSize > 0">(Total team hiring rate: ${{teamHiringTotalRate}}/hour)</span></strong>
     </div>
     <div class="card-body">
         <div class="row">

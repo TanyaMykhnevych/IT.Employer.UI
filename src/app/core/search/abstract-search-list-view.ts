@@ -8,7 +8,7 @@ export abstract class AbstractSearchListView<TParams> implements OnInit, OnDestr
     protected abstract router: Router;
     protected abstract route: ActivatedRoute;
 
-    private _subscription: Subscription;
+    private _subscription: Subscription = new Subscription();
 
     public ngOnInit(): void {
         this._subscription = this.route.queryParams.subscribe((searchParameters: TParams) => {

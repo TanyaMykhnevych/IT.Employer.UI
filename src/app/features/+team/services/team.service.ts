@@ -16,6 +16,10 @@ export class TeamService {
             : of(SearchResponseUtils.getEmptySearchResponse<TeamSearchItem>());
     }
 
+    public getTeam(id: string): Observable<Team> {
+        return this.httpClient.get<Team>(`${AppSettings.apiHost}/team/${id}`);
+    }
+
     public create(team: Team): Observable<Team> {
         return this.httpClient.post<Team>(`${AppSettings.apiHost}/team`, team);
     }

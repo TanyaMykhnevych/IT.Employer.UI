@@ -19,6 +19,14 @@ export class EmployeeService {
             : of(SearchResponseUtils.getEmptySearchResponse<Employee>());
     }
 
+    public getActiveSeparateEmployees(parameters: EmployeeSearchParameter): Observable<ISearchResponse<Employee>> {
+
+        const params: HttpParams = SearchRequestParametersUtils.getHttpRequestParams<EmployeeSearchParameter>(parameters);
+
+        return parameters ? this._http.get<ISearchResponse<Employee>>(`${AppSettings.apiHost}/employee/filter/active/single`, { params })
+            : of(SearchResponseUtils.getEmptySearchResponse<Employee>());
+    }
+
     public getEmployee(employeeId: number): Observable<Employee> {
         return employeeId ? this._http.get<Employee>(`${AppSettings.apiHost}/employee/${employeeId}`) : of(null);
     }
