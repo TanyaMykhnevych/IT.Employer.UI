@@ -15,6 +15,9 @@ export interface EmployeeSearchParameter extends ISearchQueryParameter {
     experienceFrom?: number;
     experienceTo?: number;
 
+    minHiringHourRate?: number;
+    maxHiringHourRate?: number;
+
     companyId?: string;
     teamId?: string;
 }

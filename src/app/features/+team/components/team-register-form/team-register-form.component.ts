@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@ang
 import { Team, Employee } from '../../../../models';
 import { EmptyTeam } from '../../constants/empty-team.const';
 import { EmptyEmployee } from '../../../+employee/constants/empty-employee.const';
+import { PricePolicyService } from '../../../+shared/services/price-policy/price-policy.service';
 
 @Component({
     selector: 'app-team-register-form',
@@ -15,7 +16,9 @@ export class TeamRegisterFormComponent implements OnInit {
 
     public form: FormGroup;
 
-    constructor(private formBuilder: FormBuilder) { }
+    constructor(
+        private formBuilder: FormBuilder,
+        private pricePolicyService: PricePolicyService) { }
 
     public ngOnInit(): void {
         this.form = this.formBuilder.group({
@@ -60,6 +63,12 @@ export class TeamRegisterFormComponent implements OnInit {
 
     public get teamSize(): number {
         return this.membersFormArray.length;
+    }
+
+    public get teamHiringTotalRate(): number {
+        const teamHourRates = (<Employee[]>this.membersFormArray.value).map(e => e.hourRate);
+
+        return this.pricePolicyService.calculateTeamHiringHourRate(teamHourRates);
     }
 
     public get membersFormArray(): FormArray {

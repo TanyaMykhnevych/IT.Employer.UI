@@ -13,6 +13,8 @@ import { TeamListComponent } from './components/team-list/team-list.component';
 import { TeamListItemComponent } from './components/team-list-item/team-list-item.component';
 import { MaterialModule } from '../../layout/material.module';
 import { MyTeamsComponent } from './containers/my-teams/my-teams.component';
+import { TeamDetailsComponent } from './containers/team-details/team-details.component';
+import { EmployeeModule } from '../+employee/employee.module';
 
 @NgModule({
     imports: [
@@ -23,6 +25,7 @@ import { MyTeamsComponent } from './containers/my-teams/my-teams.component';
         FormsModule,
         SharedModule.forRoot(),
         MaterialModule,
+        EmployeeModule
     ],
     declarations: [
         TeamsViewComponent,
@@ -33,6 +36,7 @@ import { MyTeamsComponent } from './containers/my-teams/my-teams.component';
         TeamListComponent,
         TeamListItemComponent,
         MyTeamsComponent,
+        TeamDetailsComponent
     ],
     entryComponents: [
     ],

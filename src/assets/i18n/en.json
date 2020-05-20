@@ -63,5 +63,6 @@
     "found": "Found",
     "empty_companies": "No companies found",
     "empty_vacancies": "No vacancies found",
-    "empty_teams": "No teams found"
+    "empty_teams": "No teams found",
+    "empty_employees": "No employees found"
 }

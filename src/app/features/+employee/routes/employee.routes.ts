@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { EmployeesViewComponent } from '../containers/search/employees-view.component';
 import { AuthGuard } from '../../../core/auth';
 import { EmployeeRegisterComponent } from '../containers/register/employee-register.component';
+import { MyEmployeesComponent } from '../containers/my-employees/my-employees.component';
 
 
 export const routes: Routes = [
@@ -22,6 +23,10 @@ export const routes: Routes = [
       {
         path: 'register',
         component: EmployeeRegisterComponent,
+      },
+      {
+        path: 'my-employees',
+        component: MyEmployeesComponent,
       },
     ]
   },

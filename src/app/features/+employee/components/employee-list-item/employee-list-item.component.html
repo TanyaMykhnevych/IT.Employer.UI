@@ -1,0 +1,38 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image" [ngStyle]="{ 'background-image': imageUrl}">
+        </div>
+        <mat-card-title>{{employee?.firstName}} {{employee?.lastName}}</mat-card-title>
+        <mat-card-subtitle>{{position}} {{profession}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p>
+            <b>Hiring rate:</b> ${{employee?.hiringHourRate}}/hour
+        </p>
+        <p>
+            <b>Technology:</b> {{technology}}
+        </p>
+        <p>
+            <b>Experience:</b> {{employee?.experienceYears}} year(s)
+        </p>
+        <p>
+            <b><i class="fa fa-envelope"></i></b>
+            <a style="margin-left: 15px;" href="mailto:{{employee?.email}}">{{employee?.email}}</a>
+        </p>
+        <p>
+            <b><i class="fa fa-skype"></i></b>
+            <a style="margin-left: 15px;" href="skype:{{employee?.skype}}?chat">{{employee?.skype}}</a>
+        </p>
+        <p>
+            <b><i class="fa fa-linkedin"></i></b>
+            <a style="margin-left: 15px;" target="_blank"
+                href="https://www.linkedin.com/in/{{employee?.linkedIn}}">{{employee?.linkedIn}}</a>
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button *ngIf="!editable" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>
+            {{'team.view' | translate}}</button>
+        <button *ngIf="editable" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>
+            {{'team.edit' | translate}}</button>
+    </mat-card-actions>
+</mat-card>

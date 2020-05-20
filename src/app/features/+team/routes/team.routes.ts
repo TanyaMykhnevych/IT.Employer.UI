@@ -3,6 +3,7 @@ import { AuthGuard } from '../../../core/auth';
 import { TeamsViewComponent } from '../containers/view/teams-view.component';
 import { TeamRegisterComponent } from '../containers/register/team-register.component';
 import { MyTeamsComponent } from '../containers/my-teams/my-teams.component';
+import { TeamDetailsComponent } from '../containers/team-details/team-details.component';
 
 export const routes: Routes = [
     {
@@ -28,6 +29,10 @@ export const routes: Routes = [
                 path: 'register',
                 component: TeamRegisterComponent,
             },
+            {
+                path: ':id',
+                component: TeamDetailsComponent,
+            }
         ]
     },
 ];

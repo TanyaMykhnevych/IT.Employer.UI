@@ -1,5 +1,10 @@
 <div class="wrap employee-page">
     <div class="employee-search">
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <h1 *ngIf="companyName">Employees at {{companyName}}</h1>
+            </div>
+        </div>
         <app-employee-search-form [totalCount]="totalCount" (valueChanges)="onSearch($event)" [totalCount]="totalCount"
             [searchParameters]="searchParameters">
             <h6 total> {{'found' | translate }}: {{totalCount}}</h6>

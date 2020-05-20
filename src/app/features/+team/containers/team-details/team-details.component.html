@@ -1,0 +1,22 @@
+<div *ngIf="team" class="wrap employee-page">
+    <div class="employee-search">
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <h1>{{team.name}} - ${{teamHiringHourRate}}/hour</h1>
+                <p style="font-size: 18px; opacity: 0.7;">Available until {{availableUntil | date: 'MM/dd/yyyy'}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <p style="font-size: 18px;">{{team.description}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <h3>Employees at {{team.name}}</h3>
+            </div>
+        </div>
+        <app-employee-list table [employees]="team.members">
+        </app-employee-list>
+    </div>
+</div>

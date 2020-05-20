@@ -3,4 +3,5 @@ export interface IUserInfo {
     username?: string;
     role?: string;
     companyId?: string;
+    companyName?: string;
 }
