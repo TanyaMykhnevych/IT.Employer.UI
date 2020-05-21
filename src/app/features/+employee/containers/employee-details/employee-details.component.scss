@@ -1,0 +1,67 @@
+@import url('http://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,700,700italic,400italic');
+
+.employee-image {
+    background-size: cover;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+}
+/* general irrelevant styles */
+
+body {
+    color: #555;
+    font-size: 1.5em;
+    font-family: "Gentium Book Basic", serif;
+}
+
+hr {
+    margin: 50px 0;
+}
+
+a {
+    color: #0099cc;
+}
+
+.container {
+    margin: 50px auto;
+    max-width: 700px;
+}
+
+.element {
+    padding: 20px;
+}
+/* demo styles */
+
+q,
+blockquote {
+    quotes: "“" "”" "‘" "’";
+    font-style: italic;
+}
+
+.french {
+    quotes: "«" "»" "‹" "›";
+}
+
+q:before,
+blockquote:before {
+    content: open-quote;
+}
+
+q:after,
+blockquote:after {
+    content: close-quote;
+}
+
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+    color: deepPink;
+    font-size: 1.2em;
+}
+
+blockquote {
+    margin-left: 0;
+    padding-left: 1em;
+    border-left: 5px solid deepPink;
+}

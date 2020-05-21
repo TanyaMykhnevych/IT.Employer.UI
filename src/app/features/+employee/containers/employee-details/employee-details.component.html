@@ -1,0 +1,68 @@
+<div *ngIf="employee" class="wrap employee-page" style="background-color: #fff; padding: 25px;">
+    <div class="employee-search">
+        <div class="row">
+            <div class="form-group col-sm-4">
+                <h1>{{employee.firstName}} {{employee.lastName}} - ${{employee.hiringHourRate}}/hour</h1>
+                <p style="font-size: 18px; opacity: 0.7;">{{position}} {{profession}}</p>
+                <p style="font-size: 18px; opacity: 0.7;margin-top: -15px;">Available until
+                    {{employee.availableUntil | date: 'MM/dd/yyyy'}}</p>
+                <button *ngIf="!relatesToCurrentCompany" class="btn btn-lg btn-success" style="width: 100px;">Hire</button>
+            </div>
+            <div class="form-group col-sm-2">
+                <div mat-card-avatar class="employee-image" [ngStyle]="{ 'background-image': imageUrl}"></div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 15px;">
+            <div class="form-group col-sm-12">
+                <p style="font-size: 18px;"><b>Birth Date:</b> {{employee.birthDate | date: 'MM/dd/yyyy'}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <p style="font-size: 18px;"><b>Primary Technology:</b> {{technology}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <p style="font-size: 18px;"><b>Years of experience:</b> {{employee.experienceYears}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-2" style="font-size: 16px;">
+                <b><i class="fa fa-envelope"></i></b>
+                <a style="margin-left: 15px;" href="mailto:{{employee?.email}}">{{employee?.email}}</a>
+            </div>
+            <div class="form-group col-sm-2" style="font-size: 16px;">
+                <b><i class="fa fa-skype"></i></b>
+                <a style="margin-left: 15px;" href="skype:{{employee?.skype}}?chat">{{employee?.skype}}</a>
+            </div>
+            <div class="form-group col-sm-2" style="font-size: 16px;">
+                <b><i class="fa fa-linkedin"></i></b>
+                <a style="margin-left: 15px;" target="_blank"
+                    href="https://www.linkedin.com/in/{{employee?.linkedIn}}">{{employee?.linkedIn}}</a>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 20px;">
+            <div class="form-group col-sm-12">
+                <p style="font-size: 18px;">{{employee.description}}</p>
+            </div>
+        </div>
+        <div *ngIf="employee.characteristics && employee.characteristics.length > 0">
+            <hr>
+            <h3>Characteristics</h3>
+            <div *ngFor="let characteristic of employee.characteristics" class="row"
+                style="margin-top: 25px; font-family: 'Gentium Book Basic', serif; color: #555;font-size: 1.5em;">
+                <div class="form-group col-sm-12">
+                    <p>
+                        {{characteristic.author}}:
+                    </p>
+                </div>
+                <div class="form-group col-sm-12" style="margin-top: -15px;">
+                    <blockquote>
+                        {{characteristic.text}}
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

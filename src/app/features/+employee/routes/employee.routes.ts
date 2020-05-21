@@ -3,6 +3,7 @@ import { EmployeesViewComponent } from '../containers/search/employees-view.comp
 import { AuthGuard } from '../../../core/auth';
 import { EmployeeRegisterComponent } from '../containers/register/employee-register.component';
 import { MyEmployeesComponent } from '../containers/my-employees/my-employees.component';
+import { EmployeeDetailsComponent } from '../containers/employee-details/employee-details.component';
 
 
 export const routes: Routes = [
@@ -28,6 +29,10 @@ export const routes: Routes = [
         path: 'my-employees',
         component: MyEmployeesComponent,
       },
+      {
+        path: ':id',
+        component: EmployeeDetailsComponent
+      }
     ]
   },
 ];
