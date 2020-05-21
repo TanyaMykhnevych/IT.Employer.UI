@@ -4,6 +4,7 @@ import { ProfessionOptionDescriptions } from '../../../../core/constants/profess
 import { KeyValue } from '@angular/common';
 import { PositionOptionDescriptions } from '../../../../core/constants/positions-option-descriptions.const';
 import { TechnologyOptionDescriptions } from '../../../../core/constants/technology-option-descriptions.const';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-employee-list-item',
@@ -17,6 +18,8 @@ export class EmployeeListItemComponent {
     private professions: KeyValue<Profession, string>[] = ProfessionOptionDescriptions;
     private positions: KeyValue<Position, string>[] = PositionOptionDescriptions;
     private tecnologies: KeyValue<Technology, string>[] = TechnologyOptionDescriptions;
+
+    constructor (private router: Router) { }
 
     public get profession(): string {
         return this.professions.find(p => p.key === this.employee.profession).value;
@@ -34,5 +37,9 @@ export class EmployeeListItemComponent {
         const url = this.employee?.imageUrl || '../../../../../assets/favicon.ico';
 
         return `url(${url})`;
+    }
+
+    public navigateToEmployeeDetails(): void {
+        this.router.navigate([`employees/${this.employee.id}`]);
     }
 }

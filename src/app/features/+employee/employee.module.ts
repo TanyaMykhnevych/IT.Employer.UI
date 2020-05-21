@@ -13,6 +13,7 @@ import { EmployeeSearchFormComponent } from './components/employee-search/employ
 import { EmployeeListItemComponent } from './components/employee-list-item/employee-list-item.component';
 import { MaterialModule } from '../../layout/material.module';
 import { MyEmployeesComponent } from './containers/my-employees/my-employees.component';
+import { EmployeeDetailsComponent } from './containers/employee-details/employee-details.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { MyEmployeesComponent } from './containers/my-employees/my-employees.com
         EmployeeListComponent,
         EmployeeSearchFormComponent,
         EmployeeListItemComponent,
-        MyEmployeesComponent
+        MyEmployeesComponent,
+        EmployeeDetailsComponent
     ],
     entryComponents: [
     ],
