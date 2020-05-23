@@ -1,0 +1,47 @@
+<div *ngIf="team || empoyee" style="min-width: 550px;">
+    <h2 mat-dialog-title>{{title}}</h2>
+
+    <mat-dialog-content [formGroup]="form">
+
+        <div *ngIf="totalPrice" style="margin-bottom: 25px;">
+            <p style="font-size: 16px;"><b>Total price (40 hours per week):</b> {{totalPrice | currency}}</p>
+        </div>
+
+        <div>
+            <mat-form-field style="min-width: 500px;">
+                <input matInput (dateChange)="onDateChanged()" [matDatepicker]="hiredFromDatepicker" readonly
+                    placeholder="Start date of hiring..." formControlName="hiredFrom">
+
+                <mat-datepicker-toggle matSuffix [for]="hiredFromDatepicker">
+                </mat-datepicker-toggle>
+
+                <mat-datepicker #hiredFromDatepicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field style="min-width: 500px;">
+                <input matInput (dateChange)="onDateChanged()" [matDatepicker]="hiredToDatepicker" readonly
+                    placeholder="End date of hiring..." formControlName="hiredTo">
+
+                <mat-datepicker-toggle matSuffix [for]="hiredToDatepicker">
+                </mat-datepicker-toggle>
+
+                <mat-datepicker #hiredToDatepicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field style="min-width: 500px;">
+                <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+                    cdkAutosizeMaxRows="5" placeholder="Write hire message..." formControlName="hireMessage"></textarea>
+            </mat-form-field>
+        </div>
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions style="float: right;margin: 45px 50px 10px 0;">
+        <button mat-raised-button color="warn" (click)="close()">Close</button>
+        <button mat-raised-button color="primary" (click)="createHire()">Send Request</button>
+    </mat-dialog-actions>
+</div>

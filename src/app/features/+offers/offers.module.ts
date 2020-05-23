@@ -5,6 +5,8 @@ import { CoreModule } from '../../core/core.module';
 import { MaterialModule } from '../../layout/material.module';
 import { MyOffersComponent } from './containers/my-offers.component';
 import { OffersRoutingModule } from './routes/offers-routing.module';
+import { MatTabsModule } from '@angular/material/tabs';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -15,6 +17,9 @@ import { OffersRoutingModule } from './routes/offers-routing.module';
         CoreModule,
         ReactiveFormsModule,
         FormsModule,
+        MaterialModule,
+        MatTabsModule,
+        RouterModule
     ],
     declarations: [
         MyOffersComponent,

@@ -9,6 +9,11 @@ import { KeyValue } from '@angular/common';
 import { TechnologyOptionDescriptions } from '../../../../core/constants/technology-option-descriptions.const';
 import { CurrentUserService } from '../../../../core/permission/services';
 import { IUserInfo } from '../../../../core/auth';
+import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
+import { HireService } from '../../../+shared/hiring/services/hire.service';
+import { HirePopupComponent } from '../../../+shared/hiring/components/hire-popup/hire-popup.component';
+import { DefaultPopupConfig } from '../../../+shared/hiring/constants/default-popup-config.const';
 
 @Component({
     selector: 'app-employee-details',
@@ -28,7 +33,10 @@ export class EmployeeDetailsComponent implements OnInit {
         private employeeService: EmployeeService,
         protected router: Router,
         protected route: ActivatedRoute,
-        private currentUserService: CurrentUserService) { }
+        private currentUserService: CurrentUserService,
+        private dialogService: MatDialog,
+        private notificationService: ToastrService,
+        private hireService: HireService) { }
 
     public ngOnInit(): void {
         this.route.params.pipe(
@@ -67,5 +75,24 @@ export class EmployeeDetailsComponent implements OnInit {
 
     public get relatesToCurrentCompany(): boolean {
         return this.currentUserInfo && this.currentUserInfo.companyId === this.employee.companyId;
+    }
+
+    public get teamLink(): string[] {
+        if (this.employee.teamId) {
+            return [`/teams/${this.employee.teamId}`];
+        }
+
+        return null;
+    }
+
+    public hireEmployee(): void {
+        const dialogRef = this.dialogService.open(HirePopupComponent, DefaultPopupConfig);
+        dialogRef.componentInstance.empoyee = this.employee;
+
+        dialogRef.componentInstance.hireCreated.subscribe(hire => {
+            this.hireService.create(hire).subscribe(
+                _ => this.notificationService.success('Hire request was successfully sent')
+            );
+        });
     }
 }

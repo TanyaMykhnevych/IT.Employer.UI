@@ -14,6 +14,7 @@ import { EmployeeListItemComponent } from './components/employee-list-item/emplo
 import { MaterialModule } from '../../layout/material.module';
 import { MyEmployeesComponent } from './containers/my-employees/my-employees.component';
 import { EmployeeDetailsComponent } from './containers/employee-details/employee-details.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { EmployeeDetailsComponent } from './containers/employee-details/employee
         ReactiveFormsModule,
         FormsModule,
         SharedModule.forRoot(),
-        MaterialModule
+        MaterialModule,
+        RouterModule
     ],
     declarations: [
         EmployeesViewComponent,
