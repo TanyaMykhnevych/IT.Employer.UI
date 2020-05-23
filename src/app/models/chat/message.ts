@@ -5,4 +5,5 @@ export interface IMessage {
     text: string;
     when?: Date;
     receiverId?: string;
+    type?: string;
 }

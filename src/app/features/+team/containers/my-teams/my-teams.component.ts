@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { cloneDeep } from 'lodash';
-import { CurrentUserService } from '../../../../core/permission/services';
+import { AbstractSearchListView } from '../../../../core/search';
 import { ISearchResponse, TeamSearchItem, TeamSearchParameter } from '../../../../models';
 import { TeamService } from '../../services/team.service';
-import { AbstractSearchListView } from '../../../../core/search';
-import { Router, ActivatedRoute } from '@angular/router';
-import { UserInfoService } from '../../../../core/auth';
 
 @Component({
     selector: 'app-my-teams',
@@ -19,24 +17,18 @@ export class MyTeamsComponent extends AbstractSearchListView<TeamSearchParameter
     constructor(
         protected router: Router,
         protected route: ActivatedRoute,
-        private _teamService: TeamService,
-        private _currentUserService: CurrentUserService,
-        private _userInfoService: UserInfoService) {
+        private _teamService: TeamService) {
         super();
     }
 
     public loadData(): void {
-        this._userInfoService.loadUserInfo().subscribe(info => this._loadTeams());
+        this._loadTeams();
     }
 
     private _loadTeams(): void {
-        let searchParameters: TeamSearchParameter = cloneDeep(this.searchParameters);
+        const searchParameters: TeamSearchParameter = cloneDeep(this.searchParameters);
 
-        const userInfo = this._currentUserService.userInfo;
-        if (userInfo && userInfo.companyId) {
-            searchParameters = { ...searchParameters, companyId: userInfo.companyId };
-        }
-
+        searchParameters.myTeams = true;
         this._teamService
             .getTeams(searchParameters)
             .subscribe((result: ISearchResponse<TeamSearchItem>) => {

@@ -20,4 +20,5 @@ export interface EmployeeSearchParameter extends ISearchQueryParameter {
 
     companyId?: string;
     teamId?: string;
+    myEmployees?: true;
 }

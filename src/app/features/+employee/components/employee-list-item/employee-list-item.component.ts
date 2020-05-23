@@ -19,7 +19,7 @@ export class EmployeeListItemComponent {
     private positions: KeyValue<Position, string>[] = PositionOptionDescriptions;
     private tecnologies: KeyValue<Technology, string>[] = TechnologyOptionDescriptions;
 
-    constructor (private router: Router) { }
+    constructor(private router: Router) { }
 
     public get profession(): string {
         return this.professions.find(p => p.key === this.employee.profession).value;
@@ -41,5 +41,15 @@ export class EmployeeListItemComponent {
 
     public navigateToEmployeeDetails(): void {
         this.router.navigate([`employees/${this.employee.id}`]);
+    }
+
+    public navigateToChat(): void {
+        this.router.navigate(['chat'], {
+            state: {
+                receiverId: this.employee.companyId,
+                receiverTopic: `${this.employee.firstName} ${this.employee.lastName}`,
+                receiverName: this.employee.companyName,
+            },
+        });
     }
 }

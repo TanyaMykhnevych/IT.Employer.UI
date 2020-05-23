@@ -9,6 +9,7 @@ import { Position } from './position.enum';
 export interface Employee extends BaseEntity {
     firstName: string;
     lastName: string;
+    companyName?: string;
     description?: string;
     birthDate?: Date;
     imageUrl?: string;

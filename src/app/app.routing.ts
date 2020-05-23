@@ -8,6 +8,7 @@ import { P500Component } from './features/+error/500.component';
 import { VacancyModule } from './features/+vacancy/vacancy.module';
 import { TeamModule } from './features/+team/team.module';
 import { OffersModule } from './features/+offers/offers.module';
+import { ChatModule } from './features/+chat/chat.module';
 
 export const routes: Routes = [
   {
@@ -46,6 +47,10 @@ export const routes: Routes = [
       {
         path: 'offers',
         loadChildren: () => OffersModule,
+      },
+      {
+        path: 'chat',
+        loadChildren: () => ChatModule,
       },
     ]
   },

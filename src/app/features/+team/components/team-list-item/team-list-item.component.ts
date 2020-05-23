@@ -32,4 +32,14 @@ export class TeamListItemComponent implements OnInit {
     public navigateToTeamDetails(): void {
         this.router.navigate([`teams/${this.team.id}`]);
     }
+
+    public navigateToChat(): void {
+        this.router.navigate(['chat'], {
+            state: {
+                receiverId: this.team.companyId,
+                receiverTopic: this.team.name,
+                receiverName: this.team.companyName,
+            },
+        });
+    }
 }

@@ -30,8 +30,12 @@
         </p>
     </mat-card-content>
     <mat-card-actions>
-        <button *ngIf="!editable" (click)="navigateToEmployeeDetails()" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>
+        <button *ngIf="!editable" (click)="navigateToEmployeeDetails()" class="btn btn-sm btn-primary"><i
+                class="fa fa-dot-circle-o"></i>
             {{'team.view' | translate}}</button>
+        <button *ngIf="!editable" (click)="navigateToChat()" class="btn btn-sm btn-info"><i
+                class="fa fa-dot-circle-o"></i>
+            Chat</button>
         <button *ngIf="editable" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>
             {{'team.edit' | translate}}</button>
     </mat-card-actions>

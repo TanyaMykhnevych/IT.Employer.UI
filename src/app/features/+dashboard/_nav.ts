@@ -40,6 +40,11 @@ export const navItems: INavData[] = [
     icon: 'icon-settings',
   },
   {
+    name: 'Chat',
+    url: '/chat',
+    icon: 'icon-cursor',
+  },
+  {
     title: true,
     name: 'Activities'
   },
@@ -63,7 +68,7 @@ export const navItems: INavData[] = [
   {
     name: 'Teams',
     url: '/teams',
-    icon: 'icon-cursor',
+    icon: 'icon-settings',
     badge: {
       variant: 'success',
       text: 'NEW'

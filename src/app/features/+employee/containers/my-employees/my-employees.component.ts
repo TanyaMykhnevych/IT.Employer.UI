@@ -47,6 +47,7 @@ export class MyEmployeesComponent extends AbstractSearchListView<EmployeeSearchP
                 first(),
                 switchMap(_ => this._employeeService.getActiveSeparateEmployees({
                     ...this.searchParameters,
+                    myEmployees: true,
                     companyId: this.currentUserService.userInfo.companyId
                 }))
             ).subscribe((result: ISearchResponse<Employee>) => {

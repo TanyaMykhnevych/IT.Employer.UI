@@ -8,7 +8,7 @@
         <app-employee-search-form [totalCount]="totalCount" (valueChanges)="onSearch($event)" [totalCount]="totalCount"
             [searchParameters]="searchParameters">
             <h6 total> {{'found' | translate }}: {{totalCount}}</h6>
-            <app-employee-list table [employees]="employees">
+            <app-employee-list table [employees]="employees" [editable]="true">
             </app-employee-list>
         </app-employee-search-form>
     </div>

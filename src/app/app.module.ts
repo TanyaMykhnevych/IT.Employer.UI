@@ -22,8 +22,8 @@ import { loadUserInfo } from './core/app-initializers/load-user-info.initializer
 import { TeamModule } from './features/+team/team.module';
 import { SettingsService } from './core/settings/services/settings.service';
 import { loadSettings } from './core/app-initializers/load-settings.initializer';
-import { CurrentUserService } from './core/permission/services';
 import { OffersModule } from './features/+offers/offers.module';
+import { ChatModule } from './features/+chat/chat.module';
 
 
 @NgModule({
@@ -42,6 +42,7 @@ import { OffersModule } from './features/+offers/offers.module';
     CompanyModule.forRoot(),
     VacancyModule.forRoot(),
     OffersModule,
+    ChatModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
