@@ -6,6 +6,11 @@ import { TeamService } from '../../services/team.service';
 import { PricePolicyService } from '../../../+shared/services/price-policy/price-policy.service';
 import { IUserInfo } from '../../../../core/auth';
 import { CurrentUserService } from '../../../../core/permission/services';
+import { MatDialog } from '@angular/material/dialog';
+import { HirePopupComponent } from '../../../+shared/hiring/components/hire-popup/hire-popup.component';
+import { DefaultPopupConfig } from '../../../+shared/hiring/constants/default-popup-config.const';
+import { ToastrService } from 'ngx-toastr';
+import { HireService } from '../../../+shared/hiring/services/hire.service';
 
 
 @Component({
@@ -23,7 +28,10 @@ export class TeamDetailsComponent implements OnInit {
         protected router: Router,
         protected route: ActivatedRoute,
         private pricePolicyService: PricePolicyService,
-        private currentUserService: CurrentUserService) {
+        private currentUserService: CurrentUserService,
+        private dialogService: MatDialog,
+        private notificationService: ToastrService,
+        private hireService: HireService) {
     }
 
     public ngOnInit(): void {
@@ -51,5 +59,16 @@ export class TeamDetailsComponent implements OnInit {
 
     public get relatesToCurrentCompany(): boolean {
         return this.currentUserInfo && this.currentUserInfo.companyId === this.team.companyId;
+    }
+
+    public hireTeam(): void {
+        const dialogRef = this.dialogService.open(HirePopupComponent, DefaultPopupConfig);
+        dialogRef.componentInstance.team = this.team;
+
+        dialogRef.componentInstance.hireCreated.subscribe(hire => {
+            this.hireService.create(hire).subscribe(
+                _ => this.notificationService.success('Hire request was successfully sent')
+            );
+        });
     }
 }
