@@ -120,4 +120,13 @@ export const navItems: INavData[] = [
       },
     ]
   },
+  {
+    name: 'Hiring Statistics',
+    url: '',
+    icon: 'icon-chart',
+    badge: {
+      variant: 'success',
+      text: 'PRO'
+    },
+  }
 ];

@@ -28,11 +28,29 @@ export class NavMenuService implements OnDestroy {
     }
 
     private _rebuildMenu(): void {
-        const result = cloneDeep(navItems);
+        let result = cloneDeep(navItems);
 
         if (this._currentUserService.userInfo && this._currentUserService.userInfo.companyId) {
             const companies = result.filter(i => i.name === 'IT Companies');
             companies[0].children = [companies[0].children[1]];
+        }
+        if (this._currentUserService.userInfo && this._currentUserService.isAdmin) {
+            result = result.filter(i => i.name !== 'My Company' &&
+                i.name !== 'My Employees' &&
+                i.name !== 'My Offers' &&
+                i.name !== 'My Vacancies' &&
+                i.name !== 'My Teams');
+            const companies = result.filter(i => i.name === 'IT Companies');
+            companies[0].children = [companies[0].children[1]];
+            const teams = result.filter(i => i.name === 'Teams');
+            teams[0].children = [teams[0].children[1]];
+            const employees = result.filter(i => i.name === 'Employees');
+            employees[0].children = [employees[0].children[1]];
+            const vacancies = result.filter(i => i.name === 'Vacancies');
+            vacancies[0].children = [vacancies[0].children[1]];
+        }
+        if (this._currentUserService.userInfo && !this._currentUserService.isAdmin) {
+            result = result.filter(i => i.name !== 'Hiring Statistics');
         }
 
         this._navMenu = result;

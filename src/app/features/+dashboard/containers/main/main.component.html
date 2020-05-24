@@ -28,6 +28,12 @@
         <img src="assets/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com" />
       </a>
     </li>
+    <li *ngIf="userInfo?.role === 'Admin'" class="nav-item px-3">
+      <h3>Admin</h3>
+    </li>
+    <li class="nav-item px-3">
+      <h3>{{userInfo?.userName}}</h3>
+    </li>
     <li>
       <button type="button" class="btn btn-block btn-outline-primary" *ngIf="isAuthenticated"
         (click)="logout()">{{'logout' | translate}}</button>

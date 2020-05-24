@@ -37,8 +37,11 @@ export class MyEmployeesComponent extends AbstractSearchListView<EmployeeSearchP
     protected loadData(): void {
         if (this.currentUserService.userInfo) {
             this._employeeService
-                .getActiveSeparateEmployees({ ...this.searchParameters, companyId: this.currentUserService.userInfo.companyId })
-                .subscribe((result: ISearchResponse<Employee>) => {
+                .getActiveSeparateEmployees({
+                    ...this.searchParameters,
+                    companyId: this.currentUserService.userInfo.companyId,
+                    myEmployees: true
+                }).subscribe((result: ISearchResponse<Employee>) => {
                     this.employees = result.items;
                     this.totalCount = result.totalCount;
                 });
