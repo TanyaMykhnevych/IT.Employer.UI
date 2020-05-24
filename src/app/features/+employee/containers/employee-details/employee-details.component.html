@@ -3,10 +3,12 @@
         <div class="row">
             <div class="form-group col-sm-4">
                 <h1>{{employee.firstName}} {{employee.lastName}} - ${{employee.hiringHourRate}}/hour</h1>
-                <p style="font-size: 18px; opacity: 0.7;">{{position}} {{profession}}</p>
+                <p style="font-size: 18px; opacity: 0.7;">{{position}} {{profession}} at {{employee.company?.name}}</p>
                 <p style="font-size: 18px; opacity: 0.7;margin-top: -15px;">Available until
                     {{employee.availableUntil | date: 'MM/dd/yyyy'}}</p>
-                <button *ngIf="!relatesToCurrentCompany" class="btn btn-lg btn-success" style="width: 100px;">Hire</button>
+
+                <p *ngIf="employee.teamId" style="font-size: 18px; opacity: 0.7;">Can be hired with <a [routerLink]="teamLink">{{employee.team.name}}</a></p>
+                <button *ngIf="!relatesToCurrentCompany && !employee.teamId" (click)="hireEmployee()" class="btn btn-lg btn-success" style="width: 100px;">Hire</button>
             </div>
             <div class="form-group col-sm-2">
                 <div mat-card-avatar class="employee-image" [ngStyle]="{ 'background-image': imageUrl}"></div>
