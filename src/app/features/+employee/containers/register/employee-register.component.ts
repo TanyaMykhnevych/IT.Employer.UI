@@ -30,7 +30,7 @@ export class EmployeeRegisterComponent implements OnInit {
 
         observable.subscribe(_ => {
             this.toastr.success('Employee was successfully registered');
-            this.router.navigate(['/employees/search']);
+            this.router.navigate(['/employees/my-employees']);
         });
     }
 }

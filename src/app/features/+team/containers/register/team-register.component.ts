@@ -27,7 +27,7 @@ export class TeamRegisterComponent {
 
         observable.subscribe(_ => {
             this.toastr.success('Team was successfully registered');
-            this.router.navigate(['/teams/search']);
+            this.router.navigate(['/teams/my-teams']);
         });
     }
 }
