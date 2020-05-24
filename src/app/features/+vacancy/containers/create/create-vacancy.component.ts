@@ -24,7 +24,7 @@ export class CreateVacancyComponent implements OnInit {
 
         observ.subscribe(_ => {
             this._toastr.success('Vacancy was created successfully');
-            this._router.navigate(['/vacancy/search']);
+            this._router.navigate(['/vacancy/my']);
         });
     }
 }
