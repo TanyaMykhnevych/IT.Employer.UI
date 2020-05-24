@@ -26,7 +26,7 @@ export class CompanyRegisterComponent implements OnInit {
 
         observ.subscribe(_ => {
             this._toastr.success('Company was registered successfully');
-            this._router.navigate(['/company/search']);
+            this._router.navigate(['/company/my-company']);
         });
     }
 }
