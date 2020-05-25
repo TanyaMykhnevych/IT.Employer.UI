@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { HireService } from '../../+shared/hiring/services/hire.service';
 import { CurrentUserService } from '../../../core/permission/services';
 import { first } from 'rxjs/operators';
@@ -6,18 +6,24 @@ import { Hire } from '../../../models/hiring/hire';
 import { HireStatus } from '../../../models/hiring/hire-status';
 import { Team, Employee } from '../../../models';
 import { ToastrService } from 'ngx-toastr';
+import { MatTabChangeEvent, MatTab } from '@angular/material/tabs';
 
 
 @Component({
     selector: 'app-my-offers',
     templateUrl: './my-offers.component.html',
-    styleUrls: ['./my-offers.component.scss']
+    styleUrls: ['./my-offers.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class MyOffersComponent implements OnInit {
 
     public openHires: Hire[] = [];
     public approvedHires: Hire[] = [];
     public declinedHires: Hire[] = [];
+
+    public sentOpenHires: Hire[] = [];
+    public sentApprovedHires: Hire[] = [];
+    public sentDeclinedHires: Hire[] = [];
 
     constructor(
         private hireService: HireService,
@@ -59,6 +65,36 @@ export class MyOffersComponent implements OnInit {
 
         if (this.declinedHires.length > 0) {
             declined += ` (${this.declinedHires.length})`;
+        }
+
+        return declined;
+    }
+
+    public get sentOpenLabel(): string {
+        let open = 'Open';
+
+        if (this.sentOpenHires.length > 0) {
+            open += ` (${this.sentOpenHires.length})`;
+        }
+
+        return open;
+    }
+
+    public get sentApprovedLabel(): string {
+        let approved = 'Approved';
+
+        if (this.sentApprovedHires.length > 0) {
+            approved += ` (${this.sentApprovedHires.length})`;
+        }
+
+        return approved;
+    }
+
+    public get sentDeclinedLabel(): string {
+        let declined = 'Declined';
+
+        if (this.sentDeclinedHires.length > 0) {
+            declined += ` (${this.sentDeclinedHires.length})`;
         }
 
         return declined;
@@ -132,6 +168,13 @@ export class MyOffersComponent implements OnInit {
                 this.openHires = hires.filter(h => h.status === HireStatus.Open);
                 this.approvedHires = hires.filter(h => h.status === HireStatus.Approved);
                 this.declinedHires = hires.filter(h => h.status === HireStatus.Declined);
+            });
+
+        this.hireService.getByHiringCompanyId(companyId)
+            .subscribe(hires => {
+                this.sentOpenHires = hires.filter(h => h.status === HireStatus.Open);
+                this.sentApprovedHires = hires.filter(h => h.status === HireStatus.Approved);
+                this.sentDeclinedHires = hires.filter(h => h.status === HireStatus.Declined);
             });
     }
 }

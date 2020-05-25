@@ -34,5 +34,19 @@ export class AppComponent implements OnInit {
         this.notificationService.info(`An offer has been created by ${hire.company.name}`);
       }
     });
+
+    this.offerNotificationService.offerApproved.subscribe((hire: Hire) => {
+      if (this.currentUserService.userInfo?.companyId === hire.hiringCompanyId) {
+        const name = hire.team?.name || `${hire.employee?.firstName} ${hire.employee?.lastName}`;
+        this.notificationService.success(`${hire.company.name} approved the offer for ${name}`);
+      }
+    });
+
+    this.offerNotificationService.offerDeclined.subscribe((hire: Hire) => {
+      if (this.currentUserService.userInfo?.companyId === hire.hiringCompanyId) {
+        const name = hire.team?.name || `${hire.employee?.firstName} ${hire.employee?.lastName}`;
+        this.notificationService.warning(`${hire.company.name} declined the offer for ${name}`);
+      }
+    });
   }
 }
