@@ -8,8 +8,10 @@ import { Hire } from '../../models/hiring/hire';
     providedIn: 'root'
 })
 export class OfferNotificationService {
-    offerReceived = new EventEmitter<Hire>();
-    connectionEstablished = new EventEmitter<Boolean>();
+    public offerReceived = new EventEmitter<Hire>();
+    public offerApproved = new EventEmitter<Hire>();
+    public offerDeclined = new EventEmitter<Hire>();
+    public connectionEstablished = new EventEmitter<Boolean>();
 
     private _hubConnection: HubConnection;
 
@@ -39,6 +41,14 @@ export class OfferNotificationService {
     private registerOnServerEvents(): void {
         this._hubConnection.on('ReceiveOffer', (data: Hire) => {
             this.offerReceived.emit(data);
+        });
+
+        this._hubConnection.on('OfferApproved', (data: Hire) => {
+            this.offerApproved.emit(data);
+        });
+
+        this._hubConnection.on('OfferDeclined', (data: Hire) => {
+            this.offerDeclined.emit(data);
         });
     }
 }

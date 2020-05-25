@@ -1,96 +1,213 @@
 <div style="background-color: #fff;padding: 45px;">
     <mat-tab-group>
-        <mat-tab label="{{openLabel}}">
-            <h3 class="no-hires" *ngIf="openHires.length === 0; else openHiresBlock">No open hires found</h3>
-            <div #openHiresBlock *ngFor="let openHire of openHires" style="font-size: 16px;padding-top: 20px;">
-                <p style="font-size: 20px;"><b>Offer from {{openHire.hiringCompany?.name}}</b></p>
+        <mat-tab class="big-tab" label="Sent to me" aria-label="big-tab">
+            <div class="div-tab">
+                <mat-tab-group>
+                    <mat-tab label="{{openLabel}}">
+                        <h3 class="no-hires" *ngIf="openHires.length === 0; else openHiresBlock">No open hires found
+                        </h3>
+                        <div #openHiresBlock *ngFor="let openHire of openHires"
+                            style="font-size: 16px;padding-top: 20px;">
+                            <p style="font-size: 20px;"><b>Offer from {{openHire.hiringCompany?.name}}</b></p>
 
-                <p *ngIf="openHire.team">
-                    <b>Team: </b>
-                    <a [routerLink]="getTeamLink(openHire.team)">{{openHire.team.name}}</a>
-                </p>
+                            <p *ngIf="openHire.team">
+                                <b>Team: </b>
+                                <a [routerLink]="getTeamLink(openHire.team)">{{openHire.team.name}}</a>
+                            </p>
 
-                <p *ngIf="openHire.employee">
-                    <b>Employee: </b>
-                    <a [routerLink]="getEmployeeLink(openHire.employee)">{{openHire.employee.firstName}}
-                        {{openHire.employee.lastName}}</a>
-                </p>
+                            <p *ngIf="openHire.employee">
+                                <b>Employee: </b>
+                                <a [routerLink]="getEmployeeLink(openHire.employee)">{{openHire.employee.firstName}}
+                                    {{openHire.employee.lastName}}</a>
+                            </p>
 
-                <p><b>Start hire: </b>{{openHire.hiredFrom | date: 'MM/dd/yy'}}</p>
-                <p><b>End hire: </b>{{openHire.hiredTo | date: 'MM/dd/yy'}}</p>
-                <p><b>Total hour price: </b>${{getTotalHourRate(openHire)}} (To be paid:
-                    ${{getTotalRateToBePaid(openHire)}})</p>
-                <p><b>Total price (40h/week): </b>{{getTotalPrice(openHire) | currency}} (To be paid:
-                    {{getTotalPriceToBePaid(openHire) | currency}})</p>
+                            <p><b>Start hire: </b>{{openHire.hiredFrom | date: 'MM/dd/yy'}}</p>
+                            <p><b>End hire: </b>{{openHire.hiredTo | date: 'MM/dd/yy'}}</p>
+                            <p><b>Total hour price: </b>${{getTotalHourRate(openHire)}} (To be paid:
+                                ${{getTotalRateToBePaid(openHire)}})</p>
+                            <p><b>Total price (40h/week): </b>{{getTotalPrice(openHire) | currency}} (To be paid:
+                                {{getTotalPriceToBePaid(openHire) | currency}})</p>
 
-                <pre style="font-size: 16px;">{{openHire.hireMessage}}</pre>
-                <div style="margin: 25px 0;">
-                    <button type="button" (click)="decline(openHire)" mat-raised-button color="warn">Decline</button>
-                    <button style="margin-left: 20px;" (click)="approve(openHire)" type="button" mat-raised-button color="primary">Approve</button>
-                </div>
-                <hr style="border: 1px solid #696969;">
+                            <pre style="font-size: 16px;">{{openHire.hireMessage}}</pre>
+                            <div style="margin: 25px 0;">
+                                <button type="button" (click)="decline(openHire)" mat-raised-button
+                                    color="warn">Decline</button>
+                                <button style="margin-left: 20px;" (click)="approve(openHire)" type="button"
+                                    mat-raised-button color="primary">Approve</button>
+                            </div>
+                            <hr style="border: 1px solid #696969;">
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="{{approvedLabel}}">
+                        <h3 class="no-hires" *ngIf="approvedHires.length === 0; else approvedHiresBlock">No approved
+                            hires
+                            found
+                        </h3>
+                        <div #approvedHiresBlock *ngFor="let approvedHire of approvedHires"
+                            style="font-size: 16px;padding-top: 20px;">
+                            <p style="font-size: 20px;"><b>Offer from {{approvedHire.hiringCompany?.name}}</b></p>
+
+                            <p *ngIf="approvedHire.team">
+                                <b>Team: </b>
+                                <a [routerLink]="getTeamLink(approvedHire.team)">{{approvedHire.team.name}}</a>
+                            </p>
+
+                            <p *ngIf="approvedHire.employee">
+                                <b>Employee: </b>
+                                <a [routerLink]="getEmployeeLink(approvedHire.employee)">{{approvedHire.employee.firstName}}
+                                    {{approvedHire.employee.lastName}}</a>
+                            </p>
+
+                            <p><b>Start hire: </b>{{approvedHire.hiredFrom | date: 'MM/dd/yy'}}</p>
+                            <p><b>End hire: </b>{{approvedHire.hiredTo | date: 'MM/dd/yy'}}</p>
+                            <p><b>Total hour price: </b>${{getTotalHourRate(approvedHire)}} (To be paid:
+                                ${{getTotalRateToBePaid(approvedHire)}})</p>
+                            <p><b>Total price (40h/week): </b>{{getTotalPrice(approvedHire) | currency}} (To be paid:
+                                {{getTotalPriceToBePaid(approvedHire) | currency}})</p>
+                            <p><b>Approved date: </b>{{approvedHire.approveDate | date: 'MM/dd/yy'}}</p>
+                            <p><b>Status: </b><span style="color: limegreen;">Approved</span></p>
+
+                            <pre style="font-size: 16px;">{{approvedHire.hireMessage}}</pre>
+                            <hr style="border: 1px solid #696969;">
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="{{declinedLabel}}">
+                        <h3 class="no-hires" *ngIf="declinedHires.length === 0; else declinedHiresBlock">No declined
+                            hires
+                            found
+                        </h3>
+                        <div #declinedHiresBlock *ngFor="let declinedHire of declinedHires"
+                            style="font-size: 16px;padding-top: 20px;">
+                            <p style="font-size: 20px;"><b>Offer from {{declinedHire.hiringCompany?.name}}</b></p>
+
+                            <p *ngIf="declinedHire.team">
+                                <b>Team: </b>
+                                <a [routerLink]="getTeamLink(declinedHire.team)">{{declinedHire.team.name}}</a>
+                            </p>
+
+                            <p *ngIf="declinedHire.employee">
+                                <b>Employee: </b>
+                                <a [routerLink]="getEmployeeLink(declinedHire.employee)">{{declinedHire.employee.firstName}}
+                                    {{declinedHire.employee.lastName}}</a>
+                            </p>
+
+                            <p><b>Start hire: </b>{{declinedHire.hiredFrom | date: 'MM/dd/yy'}}</p>
+                            <p><b>End hire: </b>{{declinedHire.hiredTo | date: 'MM/dd/yy'}}</p>
+                            <p><b>Total hour price: </b>${{getTotalHourRate(declinedHire)}} (To be paid:
+                                ${{getTotalRateToBePaid(declinedHire)}})</p>
+                            <p><b>Total price (40h/week): </b>{{getTotalPrice(declinedHire) | currency}} (To be paid:
+                                {{getTotalPriceToBePaid(declinedHire) | currency}})</p>
+                            <p><b>Approved date: </b>{{declinedHire.approveDate | date: 'MM/dd/yy'}}</p>
+                            <p><b>Status: </b><span style="color: crimson;">Declined</span></p>
+
+                            <pre style="font-size: 16px;">{{declinedHire.hireMessage}}</pre>
+                            <hr style="border: 1px solid #696969;">
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
             </div>
         </mat-tab>
-        <mat-tab label="{{approvedLabel}}">
-            <h3 class="no-hires" *ngIf="approvedHires.length === 0; else approvedHiresBlock">No approved hires found
-            </h3>
-            <div #approvedHiresBlock *ngFor="let approvedHire of approvedHires"
-                style="font-size: 16px;padding-top: 20px;">
-                <p style="font-size: 20px;"><b>Offer from {{approvedHire.hiringCompany?.name}}</b></p>
 
-                <p *ngIf="approvedHire.team">
-                    <b>Team: </b>
-                    <a [routerLink]="getTeamLink(approvedHire.team)">{{approvedHire.team.name}}</a>
-                </p>
+        <mat-tab class="big-tab" label="Sent by me" aria-label="big-tab">
+            <div class="div-tab">
+                <mat-tab-group>
+                    <mat-tab label="{{sentOpenLabel}}">
+                        <h3 class="no-hires" *ngIf="sentOpenHires.length === 0; else openHiresBlock">No open hires found
+                        </h3>
+                        <div #openHiresBlock *ngFor="let openHire of sentOpenHires"
+                            style="font-size: 16px;padding-top: 20px;">
+                            <p style="font-size: 20px;"><b>Offer from {{openHire.hiringCompany?.name}}</b></p>
 
-                <p *ngIf="approvedHire.employee">
-                    <b>Employee: </b>
-                    <a [routerLink]="getEmployeeLink(approvedHire.employee)">{{approvedHire.employee.firstName}}
-                        {{approvedHire.employee.lastName}}</a>
-                </p>
+                            <p *ngIf="openHire.team">
+                                <b>Team: </b>
+                                <a [routerLink]="getTeamLink(openHire.team)">{{openHire.team.name}}</a>
+                            </p>
 
-                <p><b>Start hire: </b>{{approvedHire.hiredFrom | date: 'MM/dd/yy'}}</p>
-                <p><b>End hire: </b>{{approvedHire.hiredTo | date: 'MM/dd/yy'}}</p>
-                <p><b>Total hour price: </b>${{getTotalHourRate(approvedHire)}} (To be paid:
-                    ${{getTotalRateToBePaid(approvedHire)}})</p>
-                <p><b>Total price (40h/week): </b>{{getTotalPrice(approvedHire) | currency}} (To be paid:
-                    {{getTotalPriceToBePaid(approvedHire) | currency}})</p>
-                <p><b>Approved date: </b>{{approvedHire.approveDate | date: 'MM/dd/yy'}}</p>
-                <p><b>Status: </b><span style="color: limegreen;">Approved</span></p>
+                            <p *ngIf="openHire.employee">
+                                <b>Employee: </b>
+                                <a [routerLink]="getEmployeeLink(openHire.employee)">{{openHire.employee.firstName}}
+                                    {{openHire.employee.lastName}}</a>
+                            </p>
 
-                <pre style="font-size: 16px;">{{approvedHire.hireMessage}}</pre>
-                <hr style="border: 1px solid #696969;">
-            </div>
-        </mat-tab>
-        <mat-tab label="{{declinedLabel}}">
-            <h3 class="no-hires" *ngIf="declinedHires.length === 0; else declinedHiresBlock">No declined hires found
-            </h3>
-            <div #declinedHiresBlock *ngFor="let declinedHire of declinedHires"
-                style="font-size: 16px;padding-top: 20px;">
-                <p style="font-size: 20px;"><b>Offer from {{declinedHire.hiringCompany?.name}}</b></p>
+                            <p><b>Start hire: </b>{{openHire.hiredFrom | date: 'MM/dd/yy'}}</p>
+                            <p><b>End hire: </b>{{openHire.hiredTo | date: 'MM/dd/yy'}}</p>
+                            <p><b>Total hour price: </b>${{getTotalHourRate(openHire)}} (To be paid:
+                                ${{getTotalRateToBePaid(openHire)}})</p>
+                            <p><b>Total price (40h/week): </b>{{getTotalPrice(openHire) | currency}} (To be paid:
+                                {{getTotalPriceToBePaid(openHire) | currency}})</p>
+                            <p><b>Status: </b><span>Open</span></p>
 
-                <p *ngIf="declinedHire.team">
-                    <b>Team: </b>
-                    <a [routerLink]="getTeamLink(declinedHire.team)">{{declinedHire.team.name}}</a>
-                </p>
+                            <pre style="font-size: 16px;">{{openHire.hireMessage}}</pre>
+                            <hr style="border: 1px solid #696969;">
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="{{sentApprovedLabel}}">
+                        <h3 class="no-hires" *ngIf="sentApprovedHires.length === 0; else approvedHiresBlock">No approved
+                            hires
+                            found
+                        </h3>
+                        <div #approvedHiresBlock *ngFor="let approvedHire of sentApprovedHires"
+                            style="font-size: 16px;padding-top: 20px;">
+                            <p style="font-size: 20px;"><b>Offer from {{approvedHire.hiringCompany?.name}}</b></p>
 
-                <p *ngIf="declinedHire.employee">
-                    <b>Employee: </b>
-                    <a [routerLink]="getEmployeeLink(declinedHire.employee)">{{declinedHire.employee.firstName}}
-                        {{declinedHire.employee.lastName}}</a>
-                </p>
+                            <p *ngIf="approvedHire.team">
+                                <b>Team: </b>
+                                <a [routerLink]="getTeamLink(approvedHire.team)">{{approvedHire.team.name}}</a>
+                            </p>
 
-                <p><b>Start hire: </b>{{declinedHire.hiredFrom | date: 'MM/dd/yy'}}</p>
-                <p><b>End hire: </b>{{declinedHire.hiredTo | date: 'MM/dd/yy'}}</p>
-                <p><b>Total hour price: </b>${{getTotalHourRate(declinedHire)}} (To be paid:
-                    ${{getTotalRateToBePaid(declinedHire)}})</p>
-                <p><b>Total price (40h/week): </b>{{getTotalPrice(declinedHire) | currency}} (To be paid:
-                    {{getTotalPriceToBePaid(declinedHire) | currency}})</p>
-                <p><b>Approved date: </b>{{declinedHire.approveDate | date: 'MM/dd/yy'}}</p>
-                <p><b>Status: </b><span style="color: crimson;">Declined</span></p>
+                            <p *ngIf="approvedHire.employee">
+                                <b>Employee: </b>
+                                <a [routerLink]="getEmployeeLink(approvedHire.employee)">{{approvedHire.employee.firstName}}
+                                    {{approvedHire.employee.lastName}}</a>
+                            </p>
 
-                <pre style="font-size: 16px;">{{declinedHire.hireMessage}}</pre>
-                <hr style="border: 1px solid #696969;">
+                            <p><b>Start hire: </b>{{approvedHire.hiredFrom | date: 'MM/dd/yy'}}</p>
+                            <p><b>End hire: </b>{{approvedHire.hiredTo | date: 'MM/dd/yy'}}</p>
+                            <p><b>Total hour price: </b>${{getTotalHourRate(approvedHire)}} (To be paid:
+                                ${{getTotalRateToBePaid(approvedHire)}})</p>
+                            <p><b>Total price (40h/week): </b>{{getTotalPrice(approvedHire) | currency}} (To be paid:
+                                {{getTotalPriceToBePaid(approvedHire) | currency}})</p>
+                            <p><b>Approved date: </b>{{approvedHire.approveDate | date: 'MM/dd/yy'}}</p>
+                            <p><b>Status: </b><span style="color: limegreen;">Approved</span></p>
+
+                            <pre style="font-size: 16px;">{{approvedHire.hireMessage}}</pre>
+                            <hr style="border: 1px solid #696969;">
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="{{sentDeclinedLabel}}">
+                        <h3 class="no-hires" *ngIf="sentDeclinedHires.length === 0; else declinedHiresBlock">No declined
+                            hires
+                            found
+                        </h3>
+                        <div #declinedHiresBlock *ngFor="let declinedHire of sentDeclinedHires"
+                            style="font-size: 16px;padding-top: 20px;">
+                            <p style="font-size: 20px;"><b>Offer from {{declinedHire.hiringCompany?.name}}</b></p>
+
+                            <p *ngIf="declinedHire.team">
+                                <b>Team: </b>
+                                <a [routerLink]="getTeamLink(declinedHire.team)">{{declinedHire.team.name}}</a>
+                            </p>
+
+                            <p *ngIf="declinedHire.employee">
+                                <b>Employee: </b>
+                                <a [routerLink]="getEmployeeLink(declinedHire.employee)">{{declinedHire.employee.firstName}}
+                                    {{declinedHire.employee.lastName}}</a>
+                            </p>
+
+                            <p><b>Start hire: </b>{{declinedHire.hiredFrom | date: 'MM/dd/yy'}}</p>
+                            <p><b>End hire: </b>{{declinedHire.hiredTo | date: 'MM/dd/yy'}}</p>
+                            <p><b>Total hour price: </b>${{getTotalHourRate(declinedHire)}} (To be paid:
+                                ${{getTotalRateToBePaid(declinedHire)}})</p>
+                            <p><b>Total price (40h/week): </b>{{getTotalPrice(declinedHire) | currency}} (To be paid:
+                                {{getTotalPriceToBePaid(declinedHire) | currency}})</p>
+                            <p><b>Approved date: </b>{{declinedHire.approveDate | date: 'MM/dd/yy'}}</p>
+                            <p><b>Status: </b><span style="color: crimson;">Declined</span></p>
+
+                            <pre style="font-size: 16px;">{{declinedHire.hireMessage}}</pre>
+                            <hr style="border: 1px solid #696969;">
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
             </div>
         </mat-tab>
     </mat-tab-group>

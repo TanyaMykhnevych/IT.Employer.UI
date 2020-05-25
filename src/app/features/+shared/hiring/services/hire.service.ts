@@ -17,6 +17,10 @@ export class HireService {
         return this.httpClient.get<Hire[]>(`${AppSettings.apiHost}/hire/company/${companyId}`);
     }
 
+    public getByHiringCompanyId(companyId: string): Observable<Hire[]> {
+        return this.httpClient.get<Hire[]>(`${AppSettings.apiHost}/hire/company/${companyId}/sent`);
+    }
+
     public create(hire: Hire): Observable<string> {
         return this.httpClient.post<string>(`${AppSettings.apiHost}/hire`, hire);
     }
