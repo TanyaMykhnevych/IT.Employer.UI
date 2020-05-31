@@ -37,8 +37,8 @@ export class EmployeeSearchFormComponent implements OnInit, OnDestroy {
             primaryTechnology: new FormControl(this._searchParameters.primaryTechnology ? Number(this._searchParameters.primaryTechnology) : ''),
             experienceFrom: new FormControl(this._searchParameters.experienceFrom ? Number(this._searchParameters.experienceFrom) : ''),
             experienceTo: new FormControl(this._searchParameters.experienceTo ? Number(this._searchParameters.experienceTo) : ''),
-            minHourRate: new FormControl(this._searchParameters.minHiringHourRate ? Number(this._searchParameters.minHiringHourRate) : ''),
-            maxHourRate: new FormControl(this._searchParameters.maxHiringHourRate ? Number(this._searchParameters.maxHiringHourRate) : '')
+            minHiringHourRate: new FormControl(this._searchParameters.minHiringHourRate ? Number(this._searchParameters.minHiringHourRate) : ''),
+            maxHiringHourRate: new FormControl(this._searchParameters.maxHiringHourRate ? Number(this._searchParameters.maxHiringHourRate) : '')
         });
         this._setPagination();
 
@@ -61,8 +61,8 @@ export class EmployeeSearchFormComponent implements OnInit, OnDestroy {
                 primaryTechnology: this._searchParameters.primaryTechnology ? Number(this._searchParameters.primaryTechnology) : '',
                 experienceFrom: this._searchParameters.experienceFrom ? Number(this._searchParameters.experienceFrom) : '',
                 experienceTo: this._searchParameters.experienceTo ? Number(this._searchParameters.experienceTo) : '',
-                minHourRate: this._searchParameters.minHiringHourRate ? Number(this._searchParameters.minHiringHourRate) : '',
-                maxHourRate: this._searchParameters.maxHiringHourRate ? Number(this._searchParameters.maxHiringHourRate) : '',
+                minHiringHourRate: this._searchParameters.minHiringHourRate ? Number(this._searchParameters.minHiringHourRate) : '',
+                maxHiringHourRate: this._searchParameters.maxHiringHourRate ? Number(this._searchParameters.maxHiringHourRate) : '',
             }, { emitEvent: false });
         }
         this._setPagination();
@@ -143,11 +143,11 @@ export class EmployeeSearchFormComponent implements OnInit, OnDestroy {
             this.page = 0;
             this.filter({ experienceTo: value });
         });
-        this.searchForm.controls.minHourRate.valueChanges.pipe(takeUntil(this._destroy$)).subscribe((value: number) => {
+        this.searchForm.controls.minHiringHourRate.valueChanges.pipe(takeUntil(this._destroy$)).subscribe((value: number) => {
             this.page = 0;
             this.filter({ minHiringHourRate: value });
         });
-        this.searchForm.controls.maxHourRate.valueChanges.pipe(takeUntil(this._destroy$)).subscribe((value: number) => {
+        this.searchForm.controls.maxHiringHourRate.valueChanges.pipe(takeUntil(this._destroy$)).subscribe((value: number) => {
             this.page = 0;
             this.filter({ maxHiringHourRate: value });
         });
