@@ -47,7 +47,7 @@
 
         <ng-container matColumnDef="size">
             <mat-header-cell *matHeaderCellDef>{{'company.size' | translate}}</mat-header-cell>
-            <mat-cell class="name-cell" *matCellDef="let company">{{CompanySize[company.size]}}</mat-cell>
+            <mat-cell class="name-cell" *matCellDef="let company">{{size(company.size)}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="type">

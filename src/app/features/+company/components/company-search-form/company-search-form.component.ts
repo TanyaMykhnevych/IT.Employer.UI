@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild, OnDestroy } from '@angular/core';
+import { KeyValue } from '@angular/common';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Subject } from 'rxjs';
@@ -6,6 +7,7 @@ import { takeUntil } from 'rxjs/operators';
 import { EnumUtils } from '../../../../core/enum';
 import { CompanySearchParameter, CompanySize, CompanyType } from '../../../../models';
 import { CompanyDefaultSearchParameter } from '../../constants/company-default-search.const';
+import { CompanySizeDescriptions } from '../../constants/compnay-size-descriptions.const';
 
 
 @Component({
@@ -15,9 +17,8 @@ import { CompanyDefaultSearchParameter } from '../../constants/company-default-s
 })
 
 export class CompanySearchFormComponent implements OnInit, OnDestroy {
-    public CompanySize = CompanySize;
     public CompanyType = CompanyType;
-    public sizes: number[] = [];
+    public sizes: KeyValue<CompanySize, string>[] = CompanySizeDescriptions;
     public types: number[] = [];
 
     @Output() public valueChanges: EventEmitter<CompanySearchParameter> = new EventEmitter<CompanySearchParameter>();
@@ -132,7 +133,6 @@ export class CompanySearchFormComponent implements OnInit, OnDestroy {
     }
 
     private _fillEnumValues(): void {
-        this.sizes = EnumUtils.getValues(CompanySize);
         this.types = EnumUtils.getValues(CompanyType);
     }
 }

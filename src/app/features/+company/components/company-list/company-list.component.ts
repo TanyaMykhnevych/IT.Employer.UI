@@ -1,8 +1,10 @@
 import { SelectionModel } from '@angular/cdk/collections';
+import { KeyValue } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { CurrentUserService } from '../../../../core/permission/services';
 import { Company, CompanySize, CompanyType } from '../../../../models';
+import { CompanySizeDescriptions } from '../../constants/compnay-size-descriptions.const';
 
 @Component({
     selector: 'app-company-list',
@@ -11,7 +13,7 @@ import { Company, CompanySize, CompanyType } from '../../../../models';
 })
 
 export class CompanyListComponent implements OnInit {
-    public CompanySize = CompanySize;
+    private sizes: KeyValue<CompanySize, string>[] = CompanySizeDescriptions;
     public CompanyType = CompanyType;
     public isAdmin: boolean = false;
 
@@ -43,6 +45,10 @@ export class CompanyListComponent implements OnInit {
     }
 
     public ngOnInit(): void { }
+
+    public size(s: CompanySize): string {
+        return this.sizes.find(p => p.key === s).value;
+    }
 
     public get selectedCompany(): Company {
         if (this._selectedCompanies.length === 1) {

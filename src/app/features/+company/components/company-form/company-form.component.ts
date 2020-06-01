@@ -1,9 +1,11 @@
+import { KeyValue } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EnumUtils } from '../../../../core/enum';
 import { Validate } from '../../../../core/form/decorators';
 import { UrlValidator } from '../../../../core/validators';
 import { Company, CompanySize, CompanyType } from '../../../../models';
+import { CompanySizeDescriptions } from '../../constants/compnay-size-descriptions.const';
 import { EmptyCompany } from '../../constants/empty-company.const';
 
 @Component({
@@ -17,9 +19,8 @@ export class CompanyFormComponent implements OnInit {
     public form: FormGroup;
     public submitted = false;
 
-    public CompanySize = CompanySize;
     public CompanyType = CompanyType;
-    public sizes: number[] = [];
+    public sizes: KeyValue<CompanySize, string>[] = CompanySizeDescriptions;
     public types: number[] = [];
 
     constructor(private _builder: FormBuilder) { }
@@ -74,7 +75,6 @@ export class CompanyFormComponent implements OnInit {
     }
 
     private _fillEnumValues(): void {
-        this.sizes = EnumUtils.getValues(CompanySize);
         this.types = EnumUtils.getValues(CompanyType);
     }
 }

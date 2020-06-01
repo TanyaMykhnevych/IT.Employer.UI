@@ -45,7 +45,7 @@
             <div class="form-group col-sm-6">
                 <label for="size">Size</label>
                 <select class="form-control" id="size" formControlName="size">
-                    <option *ngFor="let size of sizes" [value]="size">{{CompanySize[size]}}
+                    <option *ngFor="let size of sizes" [value]="size.key">{{size.value}}
                     </option>
                 </select>
             </div>

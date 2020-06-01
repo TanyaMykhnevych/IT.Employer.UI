@@ -7,7 +7,7 @@
                     <mat-form-field>
                         <mat-select placeholder="{{ 'company.size' | translate }}" formControlName="size">
                             <mat-option value=''>{{ 'all' | translate }}</mat-option>
-                            <mat-option *ngFor="let size of sizes" [value]="size">{{CompanySize[size]}}
+                            <mat-option *ngFor="let size of sizes" [value]="size.key">{{size.value}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
